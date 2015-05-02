@@ -9,9 +9,9 @@
  * @link http://www.deluxeblogtips.com/meta-box/
  */
 
-namespace PhoenixTeam;
+new PhoenixTeam_Metaboxes();
 
-class Metaboxes {
+class PhoenixTeam_Metaboxes {
 
     private $data;
 
@@ -51,5 +51,3 @@ class Metaboxes {
     }
 
 }
-
-new Metaboxes();

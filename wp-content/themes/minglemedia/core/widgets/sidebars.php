@@ -1,8 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_Sidebars();
 
-class Sidebars {
+class PhoenixTeam_Sidebars {
 
     public function __construct ()
     {
@@ -115,7 +115,7 @@ class Sidebars {
                             array(
                                 'name' => $sidebar,
                                 'description' => __('This is your custom sidebar.', THEME_SLUG),
-                                'id' => Utils::id_formatter(strtolower($sidebar)),
+                                'id' => PhoenixTeam_Utils::id_formatter(strtolower($sidebar)),
                                 'before_widget' => '<div id="%1$s" class="%2$s widget">',
                                 'after_widget' => '</div>',
                                 'before_title' => '<h4 class="widget-title">',
@@ -130,5 +130,3 @@ class Sidebars {
     }
 
 }
-
-new Sidebars();

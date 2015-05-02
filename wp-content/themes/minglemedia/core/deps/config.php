@@ -1,10 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_Deps();
 
-new Deps();
-
-class Deps {
+class PhoenixTeam_Deps {
 
     private $config = array('js_composer', 'woocommerce');
 
@@ -38,7 +36,7 @@ class Deps {
    {
 
         foreach ($deps as $dep => $active) {
-            if ($this->config[$dep] == $active)
+            if ($this->config[$dep] == true)
                 require_once THEME_DIR . '/core/deps/settings/'. $dep .'.php';
         }
    }
@@ -46,7 +44,7 @@ class Deps {
     // Check if Visual Composer is active
     private function is_active ($dep)
     {
-        if (Utils::dep_exists($dep))
+        if (PhoenixTeam_Utils::dep_exists($dep))
             return true;
 
         return false;

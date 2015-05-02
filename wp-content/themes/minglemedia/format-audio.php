@@ -6,7 +6,7 @@
 
     if ($type == 'url') {
         $audio = rwmb_meta(THEME_SLUG . '_postformat_audio_url');
-        $audio = PhoenixTeam\Utils::embed_url($audio);
+        $audio = PhoenixTeam_Utils::embed_url($audio);
     } elseif ($type == 'file') {
         $audio = rwmb_meta(THEME_SLUG . '_postformat_audio_file');
         $audio = wp_get_attachment_url($audio);

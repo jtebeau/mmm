@@ -1,7 +1,5 @@
 <?php
 
-namespace PhoenixTeam;
-
 /**
  * A Twitter library in PHP.
  *
@@ -52,7 +50,7 @@ unset($id);
  * @package codebird
  * @subpackage codebird-php
  */
-class Codebird
+class PhoenixTeam_Codebird
 {
     /**
      * The current singleton instance
@@ -320,7 +318,7 @@ class Codebird
                     for ($i = 0; $i < 26; $i++) {
                         $method_template = str_replace(chr(65 + $i), '_' . chr(97 + $i), $method_template);
                     }
-                    throw new \Exception(
+                    throw new Exception(
                         'To call the templated method "' . $method_template
                         . '", specify the parameter value for "' . $param_l . '".'
                     );
@@ -366,10 +364,10 @@ class Codebird
     public function oauth_authenticate($force_login = NULL, $screen_name = NULL, $type = 'authenticate')
     {
         if (! in_array($type, array('authenticate', 'authorize'))) {
-            throw new \Exception('To get the ' . $type . ' URL, use the correct third parameter, or omit it.');
+            throw new Exception('To get the ' . $type . ' URL, use the correct third parameter, or omit it.');
         }
         if ($this->_oauth_token === null) {
-            throw new \Exception('To get the ' . $type . ' URL, the OAuth token must be set.');
+            throw new Exception('To get the ' . $type . ' URL, the OAuth token must be set.');
         }
         $url = self::$_endpoint_oauth . 'oauth/' . $type . '?oauth_token=' . $this->_url($this->_oauth_token);
         if ($force_login) {
@@ -402,10 +400,10 @@ class Codebird
     public function oauth2_token()
     {
         if (! function_exists('curl_init')) {
-            throw new \Exception('To make API requests, the PHP curl extension must be available.');
+            throw new Exception('To make API requests, the PHP curl extension must be available.');
         }
         if (self::$_oauth_consumer_key === null) {
-            throw new \Exception('To obtain a bearer token, the consumer key must be set.');
+            throw new Exception('To obtain a bearer token, the consumer key must be set.');
         }
         $post_fields = array(
             'grant_type' => 'client_credentials'
@@ -419,7 +417,7 @@ class Codebird
         curl_setopt($ch, CURLOPT_HEADER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($ch, CURLOPT_CAINFO, __DIR__ . '/cacert.pem');
+        curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/cacert.pem');
 
         curl_setopt($ch, CURLOPT_USERPWD, self::$_oauth_consumer_key . ':' . self::$_oauth_consumer_secret);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array(
@@ -503,7 +501,7 @@ class Codebird
                 )
             )
         ) {
-            throw new \Exception(
+            throw new Exception(
                 'Error ' . $validation_result
                 . ' while validating the Twitter API certificate.'
             );
@@ -559,10 +557,10 @@ class Codebird
     private function _sha1($data)
     {
         if (self::$_oauth_consumer_secret === null) {
-            throw new \Exception('To generate a hash, the consumer secret must be set.');
+            throw new Exception('To generate a hash, the consumer secret must be set.');
         }
         if (!function_exists('hash_hmac')) {
-            throw new \Exception('To generate a hash, the PHP hash extension must be available.');
+            throw new Exception('To generate a hash, the PHP hash extension must be available.');
         }
         return base64_encode(hash_hmac('sha1', $data, self::$_oauth_consumer_secret . '&'
             . ($this->_oauth_token_secret != null ? $this->_oauth_token_secret : ''), true));
@@ -578,7 +576,7 @@ class Codebird
     protected function _nonce($length = 8)
     {
         if ($length < 1) {
-            throw new \Exception('Invalid nonce length.');
+            throw new Exception('Invalid nonce length.');
         }
         return substr(md5(microtime(true)), 0, $length);
     }
@@ -596,7 +594,7 @@ class Codebird
     protected function _sign($httpmethod, $method, $params = array(), $append_to_get = false)
     {
         if (self::$_oauth_consumer_key === null) {
-            throw new \Exception('To generate a signature, the consumer key must be set.');
+            throw new Exception('To generate a signature, the consumer key must be set.');
         }
         $sign_params      = array(
             'consumer_key'     => self::$_oauth_consumer_key,
@@ -855,7 +853,7 @@ class Codebird
                 return $httpmethod;
             }
         }
-        throw new \Exception('Can\'t find HTTP method to use for "' . $method . '".');
+        throw new Exception('Can\'t find HTTP method to use for "' . $method . '".');
     }
 
     /**
@@ -919,7 +917,7 @@ class Codebird
         foreach ($params as $key => $value) {
             // is it an array?
             if (is_array($value)) {
-                throw new \Exception('Using URL-encoded parameters is not supported for uploading media.');
+                throw new Exception('Using URL-encoded parameters is not supported for uploading media.');
             }
             $multipart_request .=
                 '--' . $multipart_border . "\r\n"
@@ -1044,7 +1042,7 @@ class Codebird
     protected function _callApi($httpmethod, $method, $params = array(), $multipart = false, $app_only_auth = false, $internal = false)
     {
         if (! function_exists('curl_init')) {
-            throw new \Exception('To make API requests, the PHP curl extension must be available.');
+            throw new Exception('To make API requests, the PHP curl extension must be available.');
         }
         if ($internal) {
             $params['adc']            = 'phone';
@@ -1089,7 +1087,7 @@ class Codebird
             if (self::$_oauth_consumer_key === null
                 && self::$_oauth_bearer_token === null
             ) {
-                throw new \Exception('To make an app-only auth API request, consumer key or bearer token must be set.');
+                throw new Exception('To make an app-only auth API request, consumer key or bearer token must be set.');
             }
             // automatically fetch bearer token, if necessary
             if (self::$_oauth_bearer_token === null) {
@@ -1106,7 +1104,7 @@ class Codebird
         curl_setopt($ch, CURLOPT_HTTPHEADER, $request_headers);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
-        curl_setopt($ch, CURLOPT_CAINFO, __DIR__ . '/cacert.pem');
+        curl_setopt($ch, CURLOPT_CAINFO, dirname(__FILE__) . '/cacert.pem');
 
         if (isset($this->_timeout)) {
             curl_setopt($ch, CURLOPT_TIMEOUT_MS, $this->_timeout);
@@ -1192,7 +1190,7 @@ class Codebird
                 case CODEBIRD_RETURNFORMAT_JSON:
                     return '{}';
                 case CODEBIRD_RETURNFORMAT_OBJECT:
-                    return new \stdClass;
+                    return new stdClass;
             }
         }
         if (! $parsed = json_decode($reply, $need_array)) {
@@ -1231,5 +1229,3 @@ class Codebird
         return $parsed;
     }
 }
-
-?>

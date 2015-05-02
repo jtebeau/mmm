@@ -6,7 +6,7 @@
 
     if ($type == 'url') {
         $video = rwmb_meta(THEME_SLUG . '_postformat_video_url');
-        $video = PhoenixTeam\Utils::embed_url($video);
+        $video = PhoenixTeam_Utils::embed_url($video);
     } elseif ($type == 'embed') {
         $video = rwmb_meta(THEME_SLUG . '_postformat_video_embed');
     } else {

@@ -15,7 +15,6 @@ class PhoenixTeam_Widget_Twitter extends WP_Widget {
         extract($args);
         $title = apply_filters('PhoenixTeam_Widget_Twitter', $instance['title'] );
         $username = ($instance['username']) ?  $instance['username'] : null;
-        $number = isset($instance['qty']) ? $instance['qty'] : null;
 
         static $counter = 1; // IDs for Widget;
         // echo $args['before_widget']; // It's the right way, but doesn't work with VC :(
@@ -103,7 +102,7 @@ class PhoenixTeam_Widget_Twitter extends WP_Widget {
 ?>
         <p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e('Title', THEME_SLUG) ?>:</label> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" /></p>
         <p><label for="<?php echo $this->get_field_id( 'username' ); ?>"><?php _e('Twitter Username:', THEME_SLUG) ?></label><input class="widefat" id="<?php echo $this->get_field_id( 'username' ); ?>" name="<?php echo $this->get_field_name( 'username' ); ?>" type="text" value="<?php echo $user; ?>" /></p>
-        <p><label for="<?php echo $this->get_field_id( 'qty' ); ?>"><?php _e('Tweets to Show:', THEME_SLUG) ?></label> 
+        <p><label for="<?php echo $this->get_field_id( 'qty' ); ?>"><?php _e('Tweets to Show:', THEME_SLUG) ?></label>
           <select class="widefat" id="<?php echo $this->get_field_id( 'qty' ); ?>" name="<?php echo $this->get_field_name( 'qty' ); ?>">
         <?php
             for ( $i = 1; $i <= 10; $i++) {
@@ -119,7 +118,7 @@ class PhoenixTeam_Widget_Twitter extends WP_Widget {
     function retrieve_tweets ( $widget_id, $instance )
     {
         $cb = $GLOBALS[THEME_SLUG .'_twitter'];
-        $timeline = $cb->statuses_userTimeline( 'screen_name=' . $instance['username']. '&count=' . $instance['qty'] . '&exclude_replies=true' );
+        $timeline = $cb->statuses_userTimeline( 'screen_name=' . $instance['username']. '&count=' . $instance['qty'] . '&exclude_replies=false' );
         return $timeline;
     }
 
@@ -138,6 +137,6 @@ class PhoenixTeam_Widget_Twitter extends WP_Widget {
             $tweets = $this->save_tweets( $widget_id, $instance );
         }
         return $tweets;
-    }   
+    }
 
 }

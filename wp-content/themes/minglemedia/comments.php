@@ -12,7 +12,7 @@
 <?php
 $list_comments_args = array(
     'type'      => 'comment',
-    'callback'  => 'PhoenixTeam\Utils::comments_callback',
+    'callback'  => 'PhoenixTeam_Utils::comments_callback',
 );
 
 $commenter = wp_get_current_commenter();

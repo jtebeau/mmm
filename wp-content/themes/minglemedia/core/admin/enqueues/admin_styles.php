@@ -1,8 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_Admin_Styles();
 
-class Admin_Styles {
+class PhoenixTeam_Admin_Styles {
 
     public function __construct ()
     {
@@ -58,5 +58,3 @@ class Admin_Styles {
     }
 
 }
-
-new Admin_Styles();

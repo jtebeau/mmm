@@ -18,8 +18,9 @@
 
             $page_subtitle  =   rwmb_meta(THEME_SLUG . '_subtitle');
             $page_crumbs    =   rwmb_meta(THEME_SLUG . '_page_breadcrumbs');
-            $page_header = rwmb_meta(THEME_SLUG . '_page_header_bg', array('type' => 'image_advanced'));
-            $header_adv = rwmb_meta(THEME_SLUG . '_page_header_advanced');
+            $page_header    =   rwmb_meta(THEME_SLUG . '_page_header_bg', array('type' => 'image_advanced'));
+            $header_adv     =   rwmb_meta(THEME_SLUG . '_page_header_advanced');
+            $port_cat       =   rwmb_meta(THEME_SLUG . '_page_portfolio_cat');
 
             if ($header_adv) {
                 $page_bgcol  = rwmb_meta(THEME_SLUG . '_page_header_bgcol');
@@ -43,10 +44,10 @@
                 if ($page_bgcol) {
 
                     if ($bgcol_opac && $bgcol_opac != 1) {
-                        $page_bgcol = PhoenixTeam\Utils::hex_to_rgb($page_bgcol);
+                        $page_bgcol = PhoenixTeam_Utils::hex_to_rgb($page_bgcol);
                         $page_bgcol = 'rgba('. $page_bgcol .','. $bgcol_opac .')';
                     }
-                    
+
                     $page_bgcol = '<div style="background-color: '. $page_bgcol .';">';
                 } else {
                     $page_bgcol = '<div>';
@@ -69,7 +70,7 @@
 <?php
                         echo get_the_title();
 
-                        if ($page_subtitle) 
+                        if ($page_subtitle)
                             echo ": <span>{$page_subtitle}</span>";
 ?>
                     </div>
@@ -77,12 +78,12 @@
 <?php
                 if ($gen_crumbs && !$page_crumbs || $gen_crumbs && $page_crumbs === '-1') :
 
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
 
                 elseif ($page_crumbs === '1') :
 
-                    PhoenixTeam\Utils::breadcrumbs();
-                
+                    PhoenixTeam_Utils::breadcrumbs();
+
                 else :
 ?>
                     <!-- Breadcrumbs turned off -->
@@ -99,7 +100,11 @@
                     <div class="col-lg-12">
                         <div id="filters-container-portfolio" class="cbp-l-filters-button"<?php if ($port_layout == 'full') echo ' style="display:table;margin:auto;"'; ?>>
 <?php
-                            $cats = get_terms( THEME_SLUG . '_portfolio_category', 'orderby=count&hide_empty=1' );
+                            if ($port_cat && $port_cat != 'none') {
+                                $cats = get_terms( THEME_SLUG . '_portfolio_category', 'orderby=count&hide_empty=1&child_of=' . $port_cat );
+                            } else {
+                                $cats = get_terms( THEME_SLUG . '_portfolio_category', 'orderby=count&hide_empty=1' );
+                            }
 
                             $to_return = array();
                             $to_return[] = '<button data-filter="*" class="cbp-filter-item cbp-filter-item-active">'. __("All", THEME_SLUG) .'<div class="cbp-filter-counter"></div></button>';
@@ -133,8 +138,19 @@
         'post_type' => THEME_SLUG . '_portfolio',
         'posts_per_page' => $quantity,
         'post_status' => 'publish',
-        'paged' => $ajaxPaged
+        'paged' => $ajaxPaged,
     );
+
+    if ($port_cat && $port_cat != 'none') {
+        $query_args['tax_query'] = array(
+            array(
+                'taxonomy' => THEME_SLUG . '_portfolio_category',
+                'field'    => 'term_id',
+                'include_children' => true,
+                'terms' => $port_cat
+            )
+        );
+    }
 
     $query = new WP_Query($query_args);
 
@@ -161,7 +177,7 @@
 
             $thumb_params = array('width' => 800,'height' => 600, 'crop' => true);
             $thumb = null;
-            
+
             $title = get_the_title();
             $author = rwmb_meta(THEME_SLUG . '_portfolio_author');
             $link = get_permalink();

@@ -9,6 +9,7 @@ else
 
 $this->sections[] = array(
     'title'     => __('WooCommerce', THEME_SLUG),
+    'icon'      => 'el-icon-shopping-cart',
     'fields'    => array(
 
         //Product Image Sizes Section
@@ -26,7 +27,7 @@ $this->sections[] = array(
                 'title'    => __('Catalog Images', THEME_SLUG),
                 'desc'     => __('Dimensions of catalog images.', THEME_SLUG),
                 'default'  => array(
-                    'width'   => '262', 
+                    'width'   => '262',
                     'height'  => '262'
                 ),
             ),
@@ -38,7 +39,7 @@ $this->sections[] = array(
                 'title'    => __('Single Product Images', THEME_SLUG),
                 'desc'     => __('Dimensions of single product images.', THEME_SLUG),
                 'default'  => array(
-                    'width'   => '547', 
+                    'width'   => '547',
                     'height'  => '547'
                 ),
             ),
@@ -50,7 +51,7 @@ $this->sections[] = array(
                 'title'    => __('Product Thumbnails', THEME_SLUG),
                 'desc'     => __('Dimensions of product thumbnails.', THEME_SLUG),
                 'default'  => array(
-                    'width'   => '90', 
+                    'width'   => '90',
                     'height'  => '90'
                 ),
             ),
@@ -71,7 +72,7 @@ $this->sections[] = array(
 
             array(
                 'id'       => 'goods_grid_qty',
-                'type'     => 'spinner', 
+                'type'     => 'spinner',
                 'title'    => __('Catalog Products Columns', THEME_SLUG),
                 'desc'     => __('Products of your main shop catalog will be organized in this number of columns.', THEME_SLUG),
                 'default'  => '4',
@@ -82,7 +83,7 @@ $this->sections[] = array(
 
             array(
                 'id'       => 'related_goods_cols',
-                'type'     => 'spinner', 
+                'type'     => 'spinner',
                 'title'    => __('Related Products Columns', THEME_SLUG),
                 'desc'     => __('Related products will be organized in this number of columns.', THEME_SLUG), // arranged in 4 columns
                 'default'  => '4',
@@ -93,7 +94,7 @@ $this->sections[] = array(
 
             array(
                 'id'       => 'related_goods_qty',
-                'type'     => 'spinner', 
+                'type'     => 'spinner',
                 'title'    => __('Related Products Quantity', THEME_SLUG),
                 'desc'     => __('How many related products to show.', THEME_SLUG),
                 'default'  => '4',

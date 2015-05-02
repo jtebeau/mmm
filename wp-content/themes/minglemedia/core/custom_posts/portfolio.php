@@ -1,8 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_Portfolio();
 
-class Portfolio {
+class PhoenixTeam_Portfolio {
 
     public function __construct ()
     {
@@ -98,5 +98,3 @@ class Portfolio {
     }
 
 }
-
-new Portfolio();

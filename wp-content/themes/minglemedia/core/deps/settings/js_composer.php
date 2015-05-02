@@ -1,10 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_PageBuilder();
 
-new PageBuilder();
-
-class PageBuilder {
+class PhoenixTeam_PageBuilder {
 
     public function __construct ()
     {

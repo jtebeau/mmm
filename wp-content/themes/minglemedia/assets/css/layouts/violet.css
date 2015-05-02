@@ -6,7 +6,7 @@ ul.social-links li a:hover { color: #9B56B7 }
 .menu li.current a {color: #9B56B7;}
 .menu li:hover a {color: #9B56B7}
 .menu ul li ul {  border-top:1px solid #9B56B7;}
-.menu ul li ul li a:hover { color:#9B56B7 !important}
+.menu ul li ul li a:hover { color: #9B56B7 !important}
 .center-line {background: #9B56B7;}
 .hi-icon-effect .hi-icon:after {background: #9B56B7;}
 .grid figcaption {background: #9B56B7;}
@@ -57,22 +57,17 @@ ul.social-links li a:hover { color: #9B56B7 }
 .phoenix-team-progerssbar-outside .vc_single_bar.bar_turquoise .vc_bar {background-color: #9B56B7 !important;}
 .wpb_accordion_header.ui-state-hover a{color: #9B56B7 !important;}
 .widget ul li > a:before {color: #9B56B7;}
-@media screen and (max-width: 991px) { 
-.menu-main-menu-container {  background: #9B56B7;}
-.phoenix-menu-wrapper button {background: #9B56B7;}
-.phoenix-menu-wrapper button:hover, .phoenix-menu-wrapper button.dl-active, .dl-menuwrapper ul { background: #9B56B7 }
-.menu ul li a {background: #9B56B7;}
-.menu ul ul {background: #9B56B7;}
-.menu ul li ul li a:hover {color:#fff; }
-.menu ul li.current-menu-item a, .menu ul li.current_page_item a {color: #fff;}}
 
-
-
-
-
-
-
-
-
-
-
+@media screen and (max-width: 991px) {
+  .menu-main-menu-container {background: #9B56B7;}
+  .phoenix-menu-wrapper button {background: #9B56B7;}
+  .phoenix-menu-wrapper button:hover,
+  .phoenix-menu-wrapper button.dl-active,
+  .dl-menuwrapper ul {background: #9B56B7}
+  .menu ul li a {background: #9B56B7;}
+  .menu ul ul {background: #9B56B7;}
+  .phoenix-menu-wrapper ul li a:hover {color: #FFF !important; border-color: rgba(255,255,255,0.35)}
+  .phoenix-menu-wrapper ul li ul li a:hover {color: #FFF !important; border-color: rgba(255,255,255,0.35)}
+  .menu ul li.current-menu-item a,
+  .menu ul li.current_page_item a {color: #fff;}
+}

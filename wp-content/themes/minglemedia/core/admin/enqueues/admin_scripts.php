@@ -1,8 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_Admin_Scripts();
 
-class Admin_Scripts {
+class PhoenixTeam_Admin_Scripts {
 
     public function __construct ()
     {
@@ -25,7 +25,6 @@ class Admin_Scripts {
         wp_register_script(THEME_SLUG . '-post-type-team', THEME_ADMIN_URI . '/assets/js/team.js', array('jquery'), '1.0.0', true);
         wp_register_script(THEME_SLUG . '-post-type-services', THEME_ADMIN_URI . '/assets/js/services.js', array('jquery'), '1.0.0', true);
         wp_register_script('woo-products', THEME_ADMIN_URI . '/assets/js/woo-products.js', array('jquery'), '1.0.0', true);
-        wp_register_script('options-devmode', THEME_ADMIN_URI . '/assets/js/options-devmode.js', array('jquery'), '1.0.0', true);
 
         $adminData = array(
             'THEME_SLUG' => THEME_SLUG,
@@ -58,14 +57,7 @@ class Admin_Scripts {
             case 'product':
                 wp_enqueue_script('woo-products');
                 break;
-            case 'toplevel_page_'. THEME_SLUG .'_options':
-                if ($reduxConfig->args['dev_mode']) {
-                    wp_enqueue_script('options-devmode');
-                }
-                break;
         }
     }
 
 }
-
-new Admin_Scripts();

@@ -5,8 +5,8 @@ ul.social-links li a:hover { color: #f1c40f }
 .menu li a:hover {color:#f1c40f !important;  border-color:#f1c40f;}
 .menu li.current a {color: #f1c40f;}
 .menu li:hover a {color: #f1c40f}
-.menu ul li ul {  border-top:1px solid #f1c40f;}
-.menu ul li ul li a:hover { color:#f1c40f !important}
+.menu ul li ul {border-top:1px solid #f1c40f;}
+.menu ul li ul li a:hover { color: #f1c40f !important}
 .center-line {background: #f1c40f;}
 .hi-icon-effect .hi-icon:after {background: #f1c40f;}
 .grid figcaption {background: #f1c40f;}
@@ -57,11 +57,17 @@ ul.social-links li a:hover { color: #f1c40f }
 .phoenix-team-progerssbar-outside .vc_single_bar.bar_turquoise .vc_bar {background-color: #f1c40f !important;}
 .wpb_accordion_header.ui-state-hover a{color: #f1c40f !important;}
 .widget ul li > a:before {color: #f1c40f;}
-@media screen and (max-width: 991px) { 
-.menu-main-menu-container {  background: #f1c40f;}
-.phoenix-menu-wrapper button {background: #f1c40f;}
-.phoenix-menu-wrapper button:hover, .phoenix-menu-wrapper button.dl-active, .dl-menuwrapper ul { background: #f1c40f }
-.menu ul li a {background: #f1c40f;}
-.menu ul ul {background: #f1c40f;}
-.menu ul li ul li a:hover {color:#fff; }
-.menu ul li.current-menu-item a, .menu ul li.current_page_item a {color: #fff;}}
+
+@media screen and (max-width: 991px) {
+  .menu-main-menu-container {background: #f1c40f;}
+  .phoenix-menu-wrapper button {background: #f1c40f;}
+  .phoenix-menu-wrapper button:hover,
+  .phoenix-menu-wrapper button.dl-active,
+  .dl-menuwrapper ul {background: #f1c40f}
+  .menu ul li a {background: #f1c40f;}
+  .menu ul ul {background: #f1c40f;}
+  .phoenix-menu-wrapper ul li a:hover {color: #FFF !important; border-color: rgba(255,255,255,0.35)}
+  .phoenix-menu-wrapper ul li ul li a:hover {color: #FFF !important; border-color: rgba(255,255,255,0.35)}
+  .menu ul li.current-menu-item a,
+  .menu ul li.current_page_item a {color: #fff;}
+}

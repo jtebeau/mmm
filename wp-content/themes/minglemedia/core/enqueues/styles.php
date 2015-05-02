@@ -1,8 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_Styles();
 
-class Styles {
+class PhoenixTeam_Styles {
 
     public function __construct ()
     {
@@ -55,8 +55,8 @@ class Styles {
         wp_enqueue_style(THEME_SLUG . '-main');
         wp_enqueue_style(THEME_SLUG . '-bxslider');
         wp_enqueue_style(THEME_SLUG . '-testimonialrotator');
-        wp_enqueue_style(THEME_SLUG . '-responsive');
         wp_enqueue_style(THEME_SLUG . '-magnific');
+        wp_enqueue_style(THEME_SLUG . '-responsive');
 
         if ($footer_skin == 'dark')
             wp_enqueue_style(THEME_SLUG . '-footer-dark-skin');
@@ -66,77 +66,82 @@ class Styles {
 
         if ($custom_skin && $custom_skin_color) {
             $custom_skin_css =
-            '/* Custom Color CSS */' .
-                'a {color: '.$custom_skin_color.';}' .
-                '.hi-icon-effect .hi-icon {color: '.$custom_skin_color.';}' .
-                'ul.social-links li a:hover {color: '.$custom_skin_color.';}' .
-                '.search-active i {color: '.$custom_skin_color.';}' .
-                '.menu li a:hover {color:'.$custom_skin_color.' !important;  border-color:'.$custom_skin_color.';}' .
-                '.menu li.current a {color: '.$custom_skin_color.';}' .
-                '.menu li:hover a {color: '.$custom_skin_color.'}' .
-                '.menu ul li ul {border-top:1px solid '.$custom_skin_color.';}' .
-                '.menu ul li ul li a:hover { color:'.$custom_skin_color.' !important;}' .
-                '.center-line {background: '.$custom_skin_color.';}' .
-                '.hi-icon-effect .hi-icon:after {background: '.$custom_skin_color.';}' .
-                '.grid figcaption {background: '.$custom_skin_color.';}' .
-                '.first-letter {background: '.$custom_skin_color.';}' .
-                '.list-check li i {color: '.$custom_skin_color.';}' .
-                '.blog-icon i {color: '.$custom_skin_color.';}' .
-                '.view-fifth .mask {background: '.$custom_skin_color.';}' .
-                '.jcarousel-control-prev, .jcarousel-control-next {color: '.$custom_skin_color.';}' .
-                '.jcarousel-control-prev:hover, .jcarousel-control-next:hover {color: '.$custom_skin_color.';}' .
-                '.page-in-name span {color: '.$custom_skin_color.';}' .
-                '.page-in-bread a {color: '.$custom_skin_color.';}' .
-                '.progress-bar-info {background-color: '.$custom_skin_color.';}' .
-                '.soc-about li a:hover{color:'.$custom_skin_color.';}' .
-                '.fact-icon {color: '.$custom_skin_color.';}' .
-                '.serv-marg i {color: '.$custom_skin_color.';}' .
-                '.serv-icon i {color: '.$custom_skin_color.';}' .
-                '.plan.featured h3 {color: '.$custom_skin_color.';}' .
-                '.plan.featured .price {color: '.$custom_skin_color.';}' .
-                '.btn-price {background-color: '.$custom_skin_color.';border-color: '.$custom_skin_color.';}' .
-                '.btn-price:hover {background-color: #fff;border-color: '.$custom_skin_color.';color:'.$custom_skin_color.';}' .
-                '.oops {color: '.$custom_skin_color.';}' .
-                '.ac-container input:checked + label, .ac-container input:checked + label:hover {color: '.$custom_skin_color.';}' .
-                '.ac-container label:hover { background: #f9f9f9; color:'.$custom_skin_color.'; }' .
-                '.cbp-l-filters-button .cbp-filter-item-active {background-color: '.$custom_skin_color.';border-color: '.$custom_skin_color.';}' .
-                '.cbp-l-filters-button .cbp-filter-counter:before {border-top: 4px solid '.$custom_skin_color.';}' .
-                '.cbp-l-filters-button .cbp-filter-counter {background-color: '.$custom_skin_color.';}' .
-                '.cbp-caption-zoom .cbp-caption-activeWrap {background-color: rgba(167, 147, 110,0.8);}' .
-                '.item-heart i {color: '.$custom_skin_color.';}' .
-                '.btn-item:hover {color: '.$custom_skin_color.';}' .
-                '.blog-category li i {color: '.$custom_skin_color.';}' .
-                '.tags-blog li a:hover {color: '.$custom_skin_color.';}' .
-                '.tweet_text a {color: '.$custom_skin_color.';}' .
-                '.cl-blog-type {color: '.$custom_skin_color.';}' .
-                '.cl-blog-name a:hover {color: '.$custom_skin_color.';}' .
-                '.cl-blog-read a:hover {color: '.$custom_skin_color.';}' .
-                '.pride_pg .current {color: '.$custom_skin_color.';border: 1px solid '.$custom_skin_color.';}' .
-                '.pride_pg a:hover {color: '.$custom_skin_color.';border:1px solid '.$custom_skin_color.';}' .
-                '.soc-blog li a:hover{color:'.$custom_skin_color.';}' .
-                '.comm_name {color: '.$custom_skin_color.';}' .
-                '.recentcomments a {color: #2E97DE !important;}' .
-                '.shortcode_tab_item_title:hover {color: '.$custom_skin_color.';}' .
-                '.shortcode_tab_item_title.active {color: '.$custom_skin_color.';}' .
-                '.tooltip_s {color: '.$custom_skin_color.';}' .
-                '.index_4_prev:hover {border:1px solid '.$custom_skin_color.';}' .
-                '.index_4_next:hover {border:1px solid '.$custom_skin_color.';}' .
-                '.menu ul li.current-menu-item a, .menu ul li.current_page_item a' .
-                '.wpb_accordion_header.ui-accordion-header-active a {color: '.$custom_skin_color.' !important;}' .
-                '.phoenix-team-progerssbar-outside .vc_single_bar.bar_turquoise .vc_bar {background-color: '.$custom_skin_color.' !important;}' .
-                '.wpb_accordion_header.ui-state-hover a{color: '.$custom_skin_color.' !important;}' .
-                '.widget ul li > a:before {color: '.$custom_skin_color.';}' .
+            '/* Custom Color CSS */' . "\n" .
+                'a {color: '.$custom_skin_color.';}' . "\n" .
+                '.hi-icon-effect .hi-icon {color: '.$custom_skin_color.';}' . "\n" .
+                'ul.social-links li a:hover {color: '.$custom_skin_color.';}' . "\n" .
+                '.search-active i {color: '.$custom_skin_color.';}' . "\n" .
+                '.phoenix-menu-wrapper li a:hover {color:'.$custom_skin_color.' !important;  border-color:'.$custom_skin_color.';}' . "\n" .
+                '.phoenix-menu-wrapper li.current a {color: '.$custom_skin_color.';}' . "\n" .
+                '.phoenix-menu-wrapper li:hover a {color: '.$custom_skin_color.'}' . "\n" .
+                '.phoenix-menu-wrapper ul li ul {border-top:1px solid '.$custom_skin_color.';}' . "\n" .
+                '.center-line {background: '.$custom_skin_color.';}' . "\n" .
+                '.hi-icon-effect .hi-icon:after {background: '.$custom_skin_color.';}' . "\n" .
+                '.grid figcaption {background: '.$custom_skin_color.';}' . "\n" .
+                '.first-letter {background: '.$custom_skin_color.';}' . "\n" .
+                '.list-check li i {color: '.$custom_skin_color.';}' . "\n" .
+                '.blog-icon i {color: '.$custom_skin_color.';}' . "\n" .
+                '.view-fifth .mask {background: '.$custom_skin_color.';}' . "\n" .
+                '.jcarousel-control-prev, .jcarousel-control-next {color: '.$custom_skin_color.';}' . "\n" .
+                '.jcarousel-control-prev:hover, .jcarousel-control-next:hover {color: '.$custom_skin_color.';}' . "\n" .
+                '.page-in-name span {color: '.$custom_skin_color.';}' . "\n" .
+                '.page-in-bread a {color: '.$custom_skin_color.';}' . "\n" .
+                '.progress-bar-info {background-color: '.$custom_skin_color.';}' . "\n" .
+                '.soc-about li a:hover{color:'.$custom_skin_color.';}' . "\n" .
+                '.fact-icon {color: '.$custom_skin_color.';}' . "\n" .
+                '.serv-marg i {color: '.$custom_skin_color.';}' . "\n" .
+                '.serv-icon i {color: '.$custom_skin_color.';}' . "\n" .
+                '.plan.featured h3 {color: '.$custom_skin_color.';}' . "\n" .
+                '.plan.featured .price {color: '.$custom_skin_color.';}' . "\n" .
+                '.btn-price {background-color: '.$custom_skin_color.';border-color: '.$custom_skin_color.';}' . "\n" .
+                '.btn-price:hover {background-color: #fff;border-color: '.$custom_skin_color.';color:'.$custom_skin_color.';}' . "\n" .
+                '.oops {color: '.$custom_skin_color.';}' . "\n" .
+                '.ac-container input:checked + label, .ac-container input:checked + label:hover {color: '.$custom_skin_color.';}' . "\n" .
+                '.ac-container label:hover { background: #f9f9f9; color:'.$custom_skin_color.'; }' . "\n" .
+                '.cbp-l-filters-button .cbp-filter-item-active {background-color: '.$custom_skin_color.';border-color: '.$custom_skin_color.';}' . "\n" .
+                '.cbp-l-filters-button .cbp-filter-counter:before {border-top: 4px solid '.$custom_skin_color.';}' . "\n" .
+                '.cbp-l-filters-button .cbp-filter-counter {background-color: '.$custom_skin_color.';}' . "\n" .
+                '.cbp-caption-zoom .cbp-caption-activeWrap {background-color: rgba(167, 147, 110,0.8);}' . "\n" .
+                '.item-heart i {color: '.$custom_skin_color.';}' . "\n" .
+                '.btn-item:hover {color: '.$custom_skin_color.';}' . "\n" .
+                '.blog-category li i {color: '.$custom_skin_color.';}' . "\n" .
+                '.tags-blog li a:hover {color: '.$custom_skin_color.';}' . "\n" .
+                '.tweet_text a {color: '.$custom_skin_color.';}' . "\n" .
+                '.cl-blog-type {color: '.$custom_skin_color.';}' . "\n" .
+                '.cl-blog-name a:hover {color: '.$custom_skin_color.';}' . "\n" .
+                '.cl-blog-read a:hover {color: '.$custom_skin_color.';}' . "\n" .
+                '.pride_pg .current {color: '.$custom_skin_color.';border: 1px solid '.$custom_skin_color.';}' . "\n" .
+                '.pride_pg a:hover {color: '.$custom_skin_color.';border:1px solid '.$custom_skin_color.';}' . "\n" .
+                '.soc-blog li a:hover{color:'.$custom_skin_color.';}' . "\n" .
+                '.comm_name {color: '.$custom_skin_color.';}' . "\n" .
+                '.recentcomments a {color: #2E97DE !important;}' . "\n" .
+                '.shortcode_tab_item_title:hover {color: '.$custom_skin_color.';}' . "\n" .
+                '.shortcode_tab_item_title.active {color: '.$custom_skin_color.';}' . "\n" .
+                '.tooltip_s {color: '.$custom_skin_color.';}' . "\n" .
+                '.index_4_prev:hover {border:1px solid '.$custom_skin_color.';}' . "\n" .
+                '.index_4_next:hover {border:1px solid '.$custom_skin_color.';}' . "\n" .
+                '.phoenix-menu-wrapper ul li.current-menu-item a, .phoenix-menu-wrapper ul li.current_page_item a {color: '.$custom_skin_color.';}' . "\n" .
+                '.wpb_accordion_header.ui-accordion-header-active a {color: '.$custom_skin_color.' !important;}' . "\n" .
+                '.phoenix-team-progerssbar-outside .vc_single_bar.bar_turquoise .vc_bar {background-color: '.$custom_skin_color.' !important;}' . "\n" .
+                '.wpb_accordion_header.ui-state-hover a{color: '.$custom_skin_color.' !important;}' . "\n" .
+                '.widget ul li > a:before {color: '.$custom_skin_color.';}' . "\n" .
+                '.phoenix-menu-wrapper ul li ul li a:hover {color: '.$custom_skin_color.' !important;}' . "\n" .
 
 
-                '@media screen and (max-width: 991px) {' .
-                '.menu-main-menu-container {  background: '.$custom_skin_color.';}' .
-                '.phoenix-menu-wrapper button {background: '.$custom_skin_color.';}' .
-                '.phoenix-menu-wrapper button:hover, .phoenix-menu-wrapper button.dl-active, .dl-menuwrapper ul { background: '.$custom_skin_color.'; }' .
-                '.menu ul li a {background: '.$custom_skin_color.';}' .
-                '.menu ul ul {background: '.$custom_skin_color.';}' .
-                '.menu ul li ul li a:hover {color:#fff; }' .
-                '.menu ul li.current-menu-item a, .menu ul li.current_page_item a {color: #fff;}' .
-                '}' .
+                '@media screen and (max-width: 991px) {' . "\n" .
+                '.menu-main-menu-container {  background: '.$custom_skin_color.';}' . "\n" .
+                '.phoenix-menu-wrapper button {background: '.$custom_skin_color.';}' . "\n" .
+                '.phoenix-menu-wrapper button:hover, .phoenix-menu-wrapper button.dl-active, .dl-menuwrapper ul { background: '.$custom_skin_color.'; }' . "\n" .
+                '.phoenix-menu-wrapper ul li a {background: '.$custom_skin_color.';}' . "\n" .
+                '.phoenix-menu-wrapper ul ul {background: '.$custom_skin_color.';}' . "\n" .
+                '.phoenix-menu-wrapper ul li ul li a:hover {color:#fff; }' . "\n" .
+                '.phoenix-menu-wrapper ul li.current-menu-item a,'.
+                '.phoenix-menu-wrapper ul li.current_page_item a {color: #fff;}' . "\n" .
+                '.phoenix-menu-wrapper li a:hover {color: #FFF !important;}' . "\n" .
+                '.phoenix-menu-wrapper ul li a {background: '.$custom_skin_color.' !important;}' . "\n" .
+                '.phoenix-menu-wrapper ul li ul li a:hover {color: #fff !important; border-color: rgba(255,255,255,0.35) !important;}' . "\n" .
+                '.phoenix-menu-wrapper ul li a:hover {color: #fff !important; border-color: rgba(255,255,255,0.35) !important;}' . "\n" .
+                '}' . "\n" .
 
             '/* Custom Color CSS END */';
 
@@ -144,7 +149,7 @@ class Styles {
         }
 
         if ($css_code)
-            wp_add_inline_style( THEME_SLUG . '-responsive', '/* Custom CSS */' . $css_code . '/* Custom CSS END */' );
+            wp_add_inline_style( THEME_SLUG . '-responsive', '/* Custom CSS */' . "\n" . $css_code . "\n" . '/* Custom CSS END */' );
 
         $this->custom_background();
     }
@@ -156,7 +161,7 @@ class Styles {
         $boxed = isset($data['boxed_swtich']) ? $data['boxed_swtich'] : 'full';
 
         if ($boxed == 'boxed') {
-            
+
             $bg_size = ( isset($data['boxed_background']['background-size']) && $data['boxed_background']['background-size'] != null ) ? 'background-size: '. $data['boxed_background']['background-size'] . "; " : null;
             $bg_color = ( isset($data['boxed_background']['background-color']) && $data['boxed_background']['background-color'] != null ) ? 'background-color: ' .$data['boxed_background']['background-color'] . "; " : null;
             $bg_image = ( isset($data['boxed_background']['background-image']) && $data['boxed_background']['background-image'] != null ) ? 'background-image: url("' . $data['boxed_background']['background-image'] . '")' . "; " : null;
@@ -192,5 +197,3 @@ class Styles {
     }
 
 }
-
-new Styles();

@@ -33,11 +33,11 @@ if (have_posts()) :
 <?php
 				if ($gen_crumbs && $post_crumbs === '-1') :
 
-					PhoenixTeam\Utils::breadcrumbs();
+					PhoenixTeam_Utils::breadcrumbs();
 
 				elseif ($post_crumbs === '1') :
 
-					PhoenixTeam\Utils::breadcrumbs();
+					PhoenixTeam_Utils::breadcrumbs();
 				
 				else :
 ?>
@@ -99,7 +99,7 @@ if (have_posts()) :
 						    </div>
 					    </div>
 					    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<?php echo PhoenixTeam\Utils::single_socials(); ?>
+							<?php echo PhoenixTeam_Utils::single_socials(); ?>
 					    </div>
 					</div>
 

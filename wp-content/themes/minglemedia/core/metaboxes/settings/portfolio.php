@@ -1,5 +1,11 @@
 <?php
 
+$port_cats_array = array('none' => __('Default (All Categories)', THEME_SLUG));
+$port_cats = get_terms( THEME_SLUG . '_portfolio_category', 'orderby=name&order=ASC&hide_empty=1' );
+foreach ($port_cats as $key => $value) {
+    $port_cats_array[$value->term_id] = $value->name;
+}
+
 // Portfolio box
 $meta_boxes[] = array(
     'id' => THEME_SLUG . '_portfolio_gallery',
@@ -145,5 +151,22 @@ $meta_boxes[] = array(
             ),
             'std'  => '-1',
         ),
+
+// DIVIDER
+array(
+    'type' => 'divider',
+    'id'   => THEME_SLUG . "_portfolio_divider_id4", // Not used, but needed
+),
+
+        // Category for portfolio page
+        array(
+            'name'    =>  __( 'Portfolio Category:', THEME_SLUG ),
+            'id'      =>  THEME_SLUG . "_portfolio_recent_works_cat",
+            'type'    =>  'select',
+            'desc'    =>  __( 'Select category for "Recent Works" section.', THEME_SLUG ),
+            'options' =>  $port_cats_array,
+            'std'     =>  'none',
+        ),
+
     )
 );

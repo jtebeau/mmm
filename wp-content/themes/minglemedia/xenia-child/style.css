@@ -1,16 +1,16 @@
 /*
-Theme Name:     Xenia Child Theme
-Theme URI:      
-Description:    Child Theme of Xenia Theme
-Author:         
-Author URI:     
-Template:       xenia
-Version:        0.0.1
-Text Domain: xenia
-Domain Path: /lang
-Tags: animations, business, clean, corporate, creative, elegant, minimal, modern, multi-purpose, parallax, portfolio, professional, responsive, retina, white
-License: GNU General Public License version 3.0
-License URI: http://www.gnu.org/licenses/gpl-3.0.html
+    Theme Name:     Xenia Child Theme
+    Theme URI:
+    Description:    Child Theme of Xenia Theme
+    Author:
+    Author URI:
+    Template:       xenia
+    Version:        0.0.1
+    Text Domain: xenia
+    Domain Path: /lang
+    Tags: animations, business, clean, corporate, creative, elegant, minimal, modern, multi-purpose, parallax, portfolio, professional, responsive, retina, white
+    License: GNU General Public License version 3.0
+    License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
 
 .alignnone { margin: 5px 20px 20px 0 }
@@ -165,7 +165,7 @@ nav {
     background: rgba(255,255,255,1);
 }
 .menu ul ul { width: auto !important }
-.menu ul ul li { width: 180px; 
+.menu ul ul li { width: 180px;
 }
 .menu ul li.sub li {
     width: 140px;
@@ -354,8 +354,8 @@ nav.sticky ul li a:before { content: '' }
     height: 100%;
     border-radius: 50%;
     content: '';
-    -webkit-box-sizing: content-box; 
-    -moz-box-sizing: content-box; 
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
     box-sizing: content-box;
 }
 .hi-icon-effect .hi-icon {
@@ -408,7 +408,7 @@ nav.sticky ul li a:before { content: '' }
 }
 .container-color {
     background: #fafafa;
-    padding: 50px 0; 
+    padding: 50px 0;
     border-top:1px solid #f2f2f2;
 }
 .grid figure {
@@ -515,15 +515,15 @@ nav.sticky ul li a:before { content: '' }
     color:#fff;
     margin-right: 47px;
 }
-@keyframes krasnaya { 
+@keyframes krasnaya {
     0% { border: 1px solid #fff }
     100% { border: 1px solid #00C0E3 }
 }
-@-webkit-keyframes krasnaya { 
+@-webkit-keyframes krasnaya {
     0% { border: 1px solid #fff }
     100% { border: 1px solid #00C0E3 }
 }
-@-moz-keyframes krasnaya { 
+@-moz-keyframes krasnaya {
     0% { border: 1px solid #fff }
     100% { border: 1px solid #00C0E3 }
 }
@@ -633,7 +633,7 @@ nav.sticky ul li a:before { content: '' }
     -webkit-backface-visibility: hidden;
 }
 .blog-desc a{
-    color: #aaa;    
+    color: #aaa;
     font-size: 11px;
 
     font-weight: 300;
@@ -653,7 +653,7 @@ nav.sticky ul li a:before { content: '' }
     font-size: 13px;
 }
 .footer-widget .soc-footer li{
-    padding: 0; 
+    padding: 0;
     border: none;
 }
 .contact-footer li {
@@ -720,10 +720,10 @@ nav.sticky ul li a:before { content: '' }
 }
 .flickr_widget_wrapper .flickr_badge_image img {
     border-radius: 2px;
-     width: auto; 
-     height: auto; 
-     max-width: 100%; 
-     max-height: 100%; 
+     width: auto;
+     height: auto;
+     max-width: 100%;
+     max-height: 100%;
 }
 .soc-footer { margin: 0px }
 .soc-footer li {
@@ -2311,7 +2311,7 @@ padding: 5px 0;
 .recentcomments a:before {
 content: '' !important;
 padding-right: 0 !important;
-} 
+}
 
 .tagcloud a {
     display: inline-block;
@@ -2571,7 +2571,7 @@ margin-bottom: 0px !important;
 }
 .tp-caption .largebutton:hover {
     color:#fff;
-    background: rgba(255,255,255,0.25); 
+    background: rgba(255,255,255,0.25);
     text-decoration: none;
 }
 
@@ -2584,6 +2584,7 @@ margin-bottom: 0px !important;
     padding-right: 15px;
     max-width: 100%;
 }
+
 .container-fullwidth {width: 100%;}
 
 

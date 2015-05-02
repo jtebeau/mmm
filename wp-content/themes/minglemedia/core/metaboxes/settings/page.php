@@ -6,6 +6,12 @@ foreach ($wp_registered_sidebars as $sidebar => $attrs) {
     $sidebars_list[$attrs['id']] = $attrs['name'];
 }
 
+$port_cats_array = array('none' => __('Default (All Categories)', THEME_SLUG));
+$port_cats = get_terms( THEME_SLUG . '_portfolio_category', 'orderby=name&order=ASC&hide_empty=1' );
+foreach ($port_cats as $key => $value) {
+    $port_cats_array[$value->term_id] = $value->name;
+}
+
 // PAGE
 $meta_boxes[] = array(
     'id' => THEME_SLUG . '_page_settings',
@@ -21,6 +27,16 @@ $meta_boxes[] = array(
             'name'  => 'Subtitle:',
             'id'    => THEME_SLUG . "_subtitle",
             'type'  => 'hidden'
+        ),
+
+        // Category for portfolio page
+        array(
+            'name'    =>  __( 'Portfolio Category:', THEME_SLUG ),
+            'id'      =>  THEME_SLUG . "_page_portfolio_cat",
+            'type'    =>  'select',
+            'desc'    =>  __( 'Select category for this page. This category <b>should be</b> a parent category.', THEME_SLUG ),
+            'options' =>  $port_cats_array,
+            'std'     =>  'none',
         ),
 
         // Header Background
@@ -102,7 +118,7 @@ array(
                 '0' => __( 'Hide', THEME_SLUG ),
             ),
             'std'  => '-1',
-        ),
+        )
 
     )
 );
@@ -121,9 +137,9 @@ $meta_boxes[] = array(
             'id'       => THEME_SLUG . '_page_layout',
             'type'     => 'image_select',
             'options'  => array(
-                'right' => THEME_URI . '/core/options/framework/core/assets/img/2cr.png',
-                'no'  => THEME_URI . '/core/options/framework/core/assets/img/1col.png',
-                'left'  => THEME_URI . '/core/options/framework/core/assets/img/2cl.png',
+                'right' => THEME_URI . '/core/options/redux-framework/ReduxCore/assets/img/2cr.png',
+                'no'  => THEME_URI . '/core/options/redux-framework/ReduxCore/assets/img/1col.png',
+                'left'  => THEME_URI . '/core/options/redux-framework/ReduxCore/assets/img/2cl.png',
             ),
             'std' => $layout
         ),

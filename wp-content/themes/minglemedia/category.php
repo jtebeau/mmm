@@ -24,7 +24,7 @@
                   </div>
 <?php
                 if ($gen_crumbs) :
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
                 else :
                     echo "<!-- Breadcrumbs turned off -->\n";
                 endif;
@@ -68,7 +68,7 @@
                         }
 
                         echo '<div class="row"><div class="col-lg-12">';
-                        PhoenixTeam\Utils::pagination('pride_pg');
+                        PhoenixTeam_Utils::pagination('pride_pg');
                         echo '</div></div>';
 
                     } else {

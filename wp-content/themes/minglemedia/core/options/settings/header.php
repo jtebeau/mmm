@@ -12,7 +12,7 @@ $this->sections[] = array(
             'title'     => __('Custom Logo', THEME_SLUG),
             //'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
             'subtitle'  => __('Upload your logo.', THEME_SLUG),
-            'default'   => array('url' => get_template_directory_uri() . '/assets/images/logo.png')                  
+            'default'   => array('url' => get_template_directory_uri() . '/assets/images/logo.png')
         ),
 
         array(
@@ -22,7 +22,7 @@ $this->sections[] = array(
             'title'     => __('Custom Retina Logo', THEME_SLUG),
             //'mode'      => false, // Can be set to false to allow any media type, or can also be set to any mime type.
             'subtitle'  => __('Upload your retina logo.', THEME_SLUG),
-            'default'   => array('url' => get_template_directory_uri() . '/assets/images/logo@2x.png')                  
+            'default'   => array('url' => get_template_directory_uri() . '/assets/images/logo@2x.png')
         ),
 
          array(
@@ -80,6 +80,15 @@ $this->sections[] = array(
                 'subtitle'  => __('Example: support@email.com', THEME_SLUG),
                 'validate'  => 'email',
                 'default'   => 'support@email.com'
+            ),
+            array(
+                'id'        => 'top_email_as_link',
+                'type'      => 'checkbox',
+                'required'  => array('display_top_contacts', '=', '1'),
+                'title'     => __('Display email as a link', THEME_SLUG),
+                'subtitle'  => __('Example: mailto:support@email.com', THEME_SLUG),
+                'desc'      => __('Email will be protected with <b><i>antispambot()</i></b> function.', THEME_SLUG),
+                'default'   => ''
             ),
 
         array(

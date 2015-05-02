@@ -189,4 +189,3 @@ if (!class_exists('PhoenixTeam_Redux_Framework_Config')) {
 
 global $reduxConfig;
 $reduxConfig = new PhoenixTeam_Redux_Framework_Config();
-

@@ -54,7 +54,7 @@
     border:1px solid #fff;
     line-height: 21px;
     background: #fff;
-    z-index: 99999;
+    z-index: 999;
 }
 
 .jcarousel-control-prev {
@@ -65,7 +65,7 @@
 .jcarousel-control-prev:hover,
 .jcarousel-control-next:hover {
     border:1px solid #eee;
-    text-decoration: none;
+    text-decoration: none !important;
     color: #00C0E1;
     background: #F9F9F9;
 }

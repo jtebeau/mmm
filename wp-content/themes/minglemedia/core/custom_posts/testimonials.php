@@ -1,8 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_Testimonials();
 
-class Testimonials {
+class PhoenixTeam_Testimonials {
 
     public function __construct ()
     {
@@ -55,5 +55,3 @@ class Testimonials {
     }
 
 }
-
-new Testimonials();

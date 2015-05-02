@@ -51,7 +51,7 @@
                 if ($page_bgcol) {
 
                     if ($bgcol_opac && $bgcol_opac != 1) {
-                        $page_bgcol = PhoenixTeam\Utils::hex_to_rgb($page_bgcol);
+                        $page_bgcol = PhoenixTeam_Utils::hex_to_rgb($page_bgcol);
                         $page_bgcol = 'rgba('. $page_bgcol .','. $bgcol_opac .')';
                     }
                     
@@ -85,11 +85,11 @@
 <?php
                 if ($gen_crumbs && !$page_crumbs || $gen_crumbs && $page_crumbs === '-1') :
 
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
 
                 elseif ($page_crumbs === '1') :
 
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
                 
                 else :
 ?>
@@ -152,7 +152,7 @@
 
 
         echo '<div class="row"><div class="col-lg-12">';
-        PhoenixTeam\Utils::pagination('pride_pg', $query);
+        PhoenixTeam_Utils::pagination('pride_pg', $query);
         echo '</div></div>';
     }
 
@@ -161,7 +161,7 @@
 
         <?php if ($sidebar_pos == 'right') : ?>
             <!-- sidebar -->
-            <div class="col-lg-3 sidebar">
+            <div class="col-lg-3">
                 <?php dynamic_sidebar($sidebar_area); ?>
             </div><!-- sidebar end-->
         <?php endif; ?>

@@ -1,8 +1,11 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_Scripts();
 
-class Scripts {
+class PhoenixTeam_Scripts {
+
+    private $gaID;
+    private $jsCODE;
 
     public function __construct ()
     {
@@ -12,26 +15,31 @@ class Scripts {
         add_action('wp_enqueue_scripts', array($this, 'conditional_scripts')); // Add Conditional Page Scripts
 
         $analytics = isset($data['analytics_switch']) ? $data['analytics_switch'] : false;
-        $ga_id = isset($data['ga_id']) ? $data['ga_id'] : null;
-        $js_code = isset($data['js_code']) ? $data['js_code'] : false;
+        $this->gaID = isset($data['ga_id']) ? $data['ga_id'] : null;
+        $this->jsCODE = isset($data['js_code']) ? $data['js_code'] : false;
 
         // Add Google Analytics
-        if ($analytics && $ga_id) {
-            add_action('wp_footer', function () use ($ga_id) {
-                echo "
-                <script type='text/javascript'>
-                    var _gaq = _gaq || []; _gaq.push(['_setAccount', '".$ga_id."']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
-                </script>\n";
-            },
-            99);
+        if ($analytics && $this->gaID) {
+            add_action('wp_footer', array($this, 'PhoenixTeam_ga'), 99);
         }
 
         // Add Custom JS
-        if ($js_code) {
-            add_action('wp_footer', function () use ($js_code) {
-                echo '<script type="text/javascript">' . $js_code . '</script>';
-            }, 99);
+        if ($this->jsCODE) {
+            add_action('wp_footer', array($this, 'PhoenixTeam_custom_js'), 99);
         }
+    }
+
+    // Load Custom JS
+    public function PhoenixTeam_custom_js () {
+        echo '<script type="text/javascript">' . $this->jsCODE . '</script>';
+    }
+
+    // Load Google Analytics
+    public function PhoenixTeam_ga () {
+        echo "
+        <script type='text/javascript'>
+            var _gaq = _gaq || []; _gaq.push(['_setAccount', '". $this->gaID ."']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })();
+        </script>\n";
     }
 
     // Load theme scripts
@@ -71,7 +79,7 @@ class Scripts {
             wp_register_script(THEME_SLUG . '-main', THEME_URI . '/assets/js/main.js', array('jquery'), '1.0.0', true);
 
             // Localize scripts
-            wp_localize_script('jquery', THEME_TEAM, Utils::javascript_globals());
+            wp_localize_script('jquery', THEME_TEAM, PhoenixTeam_Utils::javascript_globals());
 
             // Enqueue scripts
             wp_enqueue_script('jquery');
@@ -119,5 +127,3 @@ class Scripts {
     }
 
 }
-
-new Scripts();

@@ -1,10 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_eCommerce();
 
-new eCommerce();
-
-class eCommerce {
+class PhoenixTeam_eCommerce {
 
     private $reduxData;
     private $whereSetDimentions;

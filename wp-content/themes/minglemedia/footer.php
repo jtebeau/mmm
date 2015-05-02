@@ -86,14 +86,14 @@
     <div class="container">
       <div class="footer-bottom">
         <div class="row">
-          <div class="col-lg-8 col-md-7 col-sm-7 col-ms-12 pull-left">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-ms-12 pull-left">
             <div class="copyright">
               <?php if ($copyright) echo $copyright; ?>
             </div>
           </div>
-          <div class="col-lg-4 col-md-5 col-sm-5 col-ms-12 pull-right">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-ms-12 pull-right">
             <div class="foot_menu">
-            	<?php PhoenixTeam\Utils::create_nav('footer-menu', 1, 'foot_menu'); ?>
+            	<?php PhoenixTeam_Utils::create_nav('footer-menu', 1, 'foot_menu'); ?>
             </div>
           </div>
         </div>

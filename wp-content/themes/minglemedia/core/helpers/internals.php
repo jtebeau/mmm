@@ -16,7 +16,7 @@ class PhoenixTeam_Theme_Internals {
         add_filter('get_search_form', array($this, 'filter_search_form'));
 
         add_filter('get_avatar', array($this, 'change_avatar_css_class'));
-        
+
         // Set content type "text/html"
         add_filter('wp_mail_content_type', array($this, 'set_html_content_type'));
 
@@ -197,11 +197,15 @@ class PhoenixTeam_Theme_Internals {
 
     public function contact_form_ajax_handler ()
     {
-        if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], THEME_SLUG . '-cf-security')) {
+        /**
+        @TODO Attachment section
+        */
+
+        if (!isset($_REQUEST['security']) || !wp_verify_nonce($_REQUEST['security'], THEME_SLUG . '-cf-security')) {
             die;
         }
 
-        if (isset($_POST['submitted'])) {
+        if (isset($_REQUEST['submitted'])) {
 
             global $data;
             $mailTo = isset($data['contact_mail']) ? $data['contact_mail'] : array(get_option('admin_email'));
@@ -210,52 +214,92 @@ class PhoenixTeam_Theme_Internals {
 
             $return = $allFields = array();
 
-            if (trim($_POST['name']) === '') {
+            if (trim($_REQUEST['name']) === '') {
                 $nameError = true;
                 $hasError = true;
             } else {
-                $name = trim($_POST['name']);
+                $name = trim($_REQUEST['name']);
                 $name = sanitize_text_field( $name );
                 $allFields['Name'] = $name;
             }
 
-            if (trim($_POST['email']) === '')  {
+            if (trim($_REQUEST['email']) === '')  {
                 $emailError = true;
                 $hasError = true;
-            } elseif (!is_email(trim($_POST['email']))) {
+            } elseif (!is_email(trim($_REQUEST['email']))) {
                 $emailError = true;
                 $hasError = true;
             } else {
-                $email = trim($_POST['email']);
+                $email = trim($_REQUEST['email']);
                 $allFields['Email'] = $email;
             }
 
-            if (trim($_POST['subject']) === '') {
+            if (trim($_REQUEST['subject']) === '') {
                 $subjectError = true;
                 $hasError = true;
             } else {
-                $subject = trim($_POST['subject']);
+                $subject = trim($_REQUEST['subject']);
                 $subject = sanitize_text_field( $subject );
                 $allFields['Subject'] = $subject;
             }
 
-            if (trim($_POST['message']) === '') {
+            if (trim($_REQUEST['message']) === '') {
                 $messageError = true;
                 $hasError = true;
             } else {
-                $message = stripslashes(wp_kses_post(trim($_POST['message'])));
+                $message = stripslashes(wp_kses_post(trim($_REQUEST['message'])));
                 $message = balanceTags($message);
                 $allFields['Message'] = $message;
+            }
+
+            // Attachment section
+            if (!isset($_REQUEST['attachment']) || trim($_REQUEST['attachment']) === '') {
+                $attachment = null;
+            } else {
+                $attachment = trim($_REQUEST['attachment']);
+                $attachment = sanitize_text_field( $attachment );
+
+                $upDir = wp_upload_dir();
+                $tmpFilePAth = null;
+
+                if (is_writable($upDir['basedir'])) {
+
+                    $tmpFilePAth = $upDir['basedir'] . DIRECTORY_SEPARATOR . $attachment;
+
+                    file_put_contents(
+                        $tmpFilePAth,
+                        file_get_contents('php://input')
+                    );
+
+
+                }
+
             }
 
             if (!isset($hasError)) {
                 $body = $this->body($allFields);
                 $headers = 'From: '.$name. ' <'. $email .'>' . "\r\n" . 'Reply-To: ' . $email;
 
-                $emailSent = wp_mail($mailTo, $subject, $body, $headers);
+                if (isset($tmpFilePAth) && $tmpFilePAth) {
+                    if (file_exists($tmpFilePAth))
+                        $attachment = $tmpFilePAth;
+                }
+
+                $emailSent = wp_mail($mailTo, $subject, $body, $headers, $attachment);
+
+                $tmpFileDeleted = null;
+                if (isset($tmpFilePAth) && $tmpFilePAth) {
+                    if (file_exists($tmpFilePAth))
+                        $tmpFileDeleted = unlink($tmpFilePAth);
+                }
 
                 if ($emailSent) {
                     $return["emailSent"] = true;
+
+                    if ($tmpFileDeleted !== null) {
+                        $return["fileDeleted"] = $tmpFileDeleted;
+                    }
+
                     echo json_encode($return);
                     die;
                 } else {
@@ -280,7 +324,7 @@ class PhoenixTeam_Theme_Internals {
 
     private function body ($fields)
     {
-        $url = get_site_url();        
+        $url = get_site_url();
         $body = "<h3 style=\"color:#0066CC;border-bottom:1px solid #0066CC;\">". __("Details", THEME_SLUG) ."</h3>\n";
 
         foreach ($fields as $key => $val) {
@@ -329,7 +373,7 @@ class PhoenixTeam_Theme_Internals {
 
             $thumb_params = array('width' => 800,'height' => 600, 'crop' => true);
             $thumb = null;
-            
+
             $title = get_the_title();
             $author = rwmb_meta(THEME_SLUG . '_portfolio_author');
             $link = get_permalink();
@@ -349,7 +393,7 @@ class PhoenixTeam_Theme_Internals {
                             <h3><?php echo $title; ?></h3>
                             <span><?php echo $author; ?></span>
                             <a href="<?php echo $thumb; ?>" class="portfolio-attach cbp-lightbox" data-title="<?php echo $title; ?><br/>
-                            <?php if ($author) { echo __('by', THEME_TEAM) ." ". $author;} ?>"><i class="icon-search"></i></a>
+                            <?php if ($author) { echo __('by', THEME_SLUG) ." ". $author;} ?>"><i class="icon-search"></i></a>
                             <a href="<?php echo site_url() . "/wp-admin/admin-ajax.php?p={$ID}"; ?>" class="portfolio-search cbp-singlePageInline"><i class="icon-attach"></i></a>
                         </figcaption>
                     </figure>
@@ -364,10 +408,10 @@ class PhoenixTeam_Theme_Internals {
 
     public function inline_portfolio ()
     {
-        check_ajax_referer( THEME_TEAM . "-security", 'security' );
+        check_ajax_referer(THEME_SLUG . "-port-security", 'security');
 
         $id = parse_url($_GET['url']);
-        $args = "post_type=".THEME_SLUG."_portfolio&{$id['query']}";
+        $args = "post_type=".THEME_SLUG."_portfolio&{$id['query']}&showposts=1";
 
         $query = new WP_Query($args);
 
@@ -378,22 +422,43 @@ class PhoenixTeam_Theme_Internals {
 
             $thumb_params = array('width' => 800,'height' => 600);
             $thumb = null;
-            
+
             $title = get_the_title();
             $author = rwmb_meta(THEME_SLUG . '_portfolio_author');
             $description = rwmb_meta(THEME_SLUG . '_portfolio_description');
             $link = get_permalink();
 
+            // $gallery = rwmb_meta(THEME_SLUG . "_portfolio_gallery", array('type' => 'image_advanced'));
+
             if (has_post_thumbnail()) {
                 $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($ID), 'full', true );
+                // $thumb = array('full_url' => $thumb[0]);
                 $thumb = $thumb[0];
             } else {
                 $thumb = THEME_URI . "/assets/images/nopicture.png";
+                // $thumb = false;
             }
+
+            // if ($thumb) {
+            //     array_unshift($gallery, $thumb);
+            // }
     ?>
             <div class="cbp-l-inline">
                 <div class="cbp-l-inline-left">
-                    <?php if ($thumb) echo '<img src="'. bfi_thumb( $thumb, $thumb_params ) .'" alt="'. $title .'" class="cbp-l-project-img" />'; ?>
+<?php
+                    // if (count($gallery)) :
+?>
+                    <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($title); ?>">
+                        <!-- <ul id="bxslider-<?php // echo $ID; ?>" class="bxslider"> -->
+<?php
+                            // foreach ($gallery as $item) {
+                            //   echo '<li><img src="'. bfi_thumb($item['full_url'], $thumb_params) .'" alt="" class="cbp-l-project-img"></li>';
+                            // }
+?>
+                        <!-- </ul> -->
+<?php
+                    // endif;
+?>
                 </div>
                 <div class="cbp-l-inline-right">
                     <div class="cbp-l-inline-title"><?php echo $title; ?></div>
@@ -402,6 +467,21 @@ class PhoenixTeam_Theme_Internals {
                     <a href="<?php echo $link; ?>" target="_blank" class="btn-simple"><?php _e('View Project', THEME_SLUG); ?></a>
                 </div>
             </div>
+
+            <?php // if (count($gallery)) : ?>
+                <!-- bxslider init -->
+                <!-- <script type="text/javascript">
+                //     jQuery(function() {
+                //         jQuery('#bxslider-<?php // echo $ID; ?>').bxSlider({
+                //             adaptiveHeight: true,
+                //             mode: 'fade',
+                //             slideMargin: 0,
+                //             pager: false,
+                //             controls: true
+                //         });
+                //     });
+              </script> -->
+            <?php // endif; ?>
     <?php
         }
         wp_reset_postdata();

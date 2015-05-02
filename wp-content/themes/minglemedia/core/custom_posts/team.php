@@ -1,8 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_Team();
 
-class Team {
+class PhoenixTeam_Team {
 
     public function __construct ()
     {
@@ -55,5 +55,3 @@ class Team {
     }
 
 }
-
-new Team();

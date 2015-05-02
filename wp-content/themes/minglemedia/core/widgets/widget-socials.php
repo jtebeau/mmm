@@ -15,14 +15,26 @@ class PhoenixTeam_Widget_Socials extends WP_Widget {
     private function set_socials ()
     {
         global $data;
-
         $this->socials['facebook'] = isset($data['facebook']) ? $data['facebook'] : null;
         $this->socials['twitter'] = isset($data['twitter']) ? $data['twitter'] : null;
         $this->socials['tumblr'] = isset($data['tumblr']) ? $data['tumblr'] : null;
         $this->socials['linkedin'] = isset($data['linkedin']) ? $data['linkedin'] : null;
         $this->socials['google'] = isset($data['googleplus']) ? $data['googleplus'] : null;
         $this->socials['pinterest'] = isset($data['pinterest']) ? $data['pinterest'] : null;
-        $this->socials['vk'] = isset($data['vk']) ? $data['vk'] : null;
+        $this->socials['instagram'] = isset($data['instagram']) ? $data['instagram'] : null;
+        $this->socials['flickr'] = isset($data['flickr']) ? $data['flickr'] : null;
+        $this->socials['youtube'] = isset($data['youtube']) ? $data['youtube'] : null;
+        $this->socials['foursquare'] = isset($data['foursquare']) ? $data['foursquare'] : null;
+        $this->socials['apple'] = isset($data['apple']) ? $data['apple'] : null;
+        $this->socials['android'] = isset($data['android']) ? $data['android'] : null;
+        $this->socials['windows'] = isset($data['windows']) ? $data['windows'] : null;
+        $this->socials['behance'] = isset($data['behance']) ? $data['behance'] : null;
+        $this->socials['dribbble'] = isset($data['dribbble']) ? $data['dribbble'] : null;
+        $this->socials['delicious'] = isset($data['delicious']) ? $data['delicious'] : null;
+        $this->socials['skype'] = isset($data['skype']) ? $data['skype'] : null;
+        $this->socials['github'] = isset($data['github']) ? $data['github'] : null;
+        $this->socials['vimeo'] = isset($data['vimeo']) ? $data['vimeo'] : null;
+        $this->socials['vk'] = isset($data['vk']) ? $data['vk'] : null;       
     }
 
     public function widget ( $args, $instance )
@@ -53,6 +65,42 @@ class PhoenixTeam_Widget_Socials extends WP_Widget {
                         echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'-plus-square"></i></a></li>';
                     break;
                 case 'vk':
+                    if ($value && ${$key} !== '0')
+                        echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'"></i></a></li>';
+                    break;
+                case 'instagram':
+                    if ($value && ${$key} !== '0')
+                        echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'"></i></a></li>';
+                    break;
+                case 'flickr':
+                    if ($value && ${$key} !== '0')
+                        echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'"></i></a></li>';
+                    break;
+                case 'foursquare':
+                    if ($value && ${$key} !== '0')
+                        echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'"></i></a></li>';
+                    break;
+                case 'apple':
+                    if ($value && ${$key} !== '0')
+                        echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'"></i></a></li>';
+                    break;
+                case 'android':
+                    if ($value && ${$key} !== '0')
+                        echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'"></i></a></li>';
+                    break;
+                case 'windows':
+                    if ($value && ${$key} !== '0')
+                        echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'"></i></a></li>';
+                    break;
+                case 'dribbble':
+                    if ($value && ${$key} !== '0')
+                        echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'"></i></a></li>';
+                    break;
+                case 'delicious':
+                    if ($value && ${$key} !== '0')
+                        echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'"></i></a></li>';
+                    break;
+                case 'skype':
                     if ($value && ${$key} !== '0')
                         echo '<li><a href="'.$value.'"><i class="fa fa-'.$key.'"></i></a></li>';
                     break;

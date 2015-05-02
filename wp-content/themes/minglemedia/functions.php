@@ -1,3 +1,3 @@
 <?php
 	require_once (TEMPLATEPATH . '/core/core.php');
-	PhoenixTeam\Core::initInstance();
+	PhoenixTeam_Core::initInstance();

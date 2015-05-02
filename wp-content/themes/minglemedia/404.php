@@ -17,7 +17,7 @@
 			</div>
 <?php
 			if ($gen_crumbs) :
-				PhoenixTeam\Utils::breadcrumbs();
+				PhoenixTeam_Utils::breadcrumbs();
 			else :
 ?>
 			<!-- Breadcrumbs turned off -->

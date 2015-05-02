@@ -1,13 +1,13 @@
 <?php
 
-namespace PhoenixTeam;
+new PhoenixTeam_Theme_admin();
 
-class Theme_admin {
+class PhoenixTeam_Theme_admin {
 
     public function __construct ()
     {
         $this->includeEnqueues();
-        add_action('admin_menu', array($this, 'simplify_admin_UI'), 99);
+        add_action('admin_menu', array($this, 'simplify_admin_UI'), 999);
     }
 
     public function includeEnqueues ()
@@ -23,11 +23,9 @@ class Theme_admin {
         }
 
         if (class_exists('Envato_WP_Toolkit')){
-            remove_menu_page( 'envato-wordpress-toolkit' );
+            remove_menu_page( EWPT_PLUGIN_SLUG );
         }
 
     }    
 
 }
-
-new Theme_admin();

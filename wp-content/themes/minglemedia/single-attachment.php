@@ -25,7 +25,7 @@ if (have_posts()) :
               </div>
 <?php
                 if ($gen_crumbs) :
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
                 else :
 ?>
                     <!-- Breadcrumbs turned off -->
@@ -95,7 +95,7 @@ if (have_posts()) :
 
                     <div class="row">
                         <div class="col-lg-12">
-                            <?php echo PhoenixTeam\Utils::single_socials(); ?>
+                            <?php echo PhoenixTeam_Utils::single_socials(); ?>
                         </div>
                     </div>
 

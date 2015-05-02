@@ -1,8 +1,6 @@
 <?php
 
-namespace PhoenixTeam;
-
-class Core {
+class PhoenixTeam_Core {
 
     private $config = array(
         'team' => 'PhoenixTeam',
@@ -94,9 +92,9 @@ class Core {
     private function addOptionsFramework ()
     {
         if ( !class_exists( 'ReduxFramework' ) &&
-             file_exists( THEME_DIR . '/core/options/framework/core/framework.php' ) )
+             file_exists( THEME_DIR . '/core/options/redux-framework/ReduxCore/framework.php' ) )
         {
-            require_once THEME_DIR . '/core/options/framework/core/framework.php';
+            require_once THEME_DIR . '/core/options/redux-framework/ReduxCore/framework.php';
             require_once THEME_DIR  . '/core/options/config.php';
             return true;
         }
@@ -127,14 +125,14 @@ class Core {
                     // 'chat',
                     // 'status'
                 )
-            ); 
+            );
 
             // Add thumbnails
             add_theme_support('post-thumbnails', array( 'post', THEME_SLUG . '_portfolio' ));
             // HTML5 Form
-            add_theme_support( 'html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption' ) );
-            // WooCommerce Support
-            add_theme_support( 'woocommerce' );
+            add_theme_support('html5', array( 'comment-list', 'comment-form', 'search-form', 'gallery', 'caption'));
+            // WooCommerce support declaration
+            add_theme_support('woocommerce');
         }
     }
 
@@ -215,7 +213,7 @@ class Core {
     private function includeMetaboxes ()
     {
         // Include the meta box script
-        require_once RWMB_DIR . 'meta-box.php';   
+        require_once RWMB_DIR . 'meta-box.php';
         // Include the meta box definition (the file where you define meta boxes, see `demo/demo.php`)
         require_once THEME_DIR . '/core/metaboxes/config.php';
     }

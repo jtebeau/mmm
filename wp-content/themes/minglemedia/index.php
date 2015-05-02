@@ -7,7 +7,7 @@
     $sidebar = isset($data['blog_sidebar_position']) ? $data['blog_sidebar_position'] : 'right';
     $layout = isset($data['blog_layout']) ? $data['blog_layout'] : 'classic';
 
-    $page = PhoenixTeam\Utils::check_posts_page();
+    $page = PhoenixTeam_Utils::check_posts_page();
 ?>
 
 <?php
@@ -32,11 +32,11 @@
 <?php
                 if ($gen_crumbs && $page_crumbs === '-1') :
 
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
 
                 elseif ($page_crumbs === '1') :
 
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
                 
                 else :
 ?>
@@ -115,7 +115,7 @@
         }
 
         echo '<div class="row"><div class="col-lg-12">';
-        $pagination = PhoenixTeam\Utils::pagination('pride_pg', $query);
+        $pagination = PhoenixTeam_Utils::pagination('pride_pg', $query);
         if (!$pagination) posts_nav_link();
         echo '</div></div>';
     } else {

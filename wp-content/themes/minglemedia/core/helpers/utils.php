@@ -1,10 +1,8 @@
 <?php
 
-namespace PhoenixTeam;
+abstract class PhoenixTeam_Utils {
 
-abstract class Utils {
-
-    public static $fa_social_icons = array("fa-android" => "android", "fa-apple" => "apple", "fa-behance" => "behance", "fa-bitbucket" => "bitbucket", "fa-bitcoin" => "bitcoin", "fa-btc" => "btc", "fa-codepen" => "codepen", "fa-css3" => "css3", "fa-delicious" => "delicious", "fa-deviantart" => "deviantart", "fa-digg" => "digg", "fa-dribbble" => "dribbble", "fa-dropbox" => "dropbox", "fa-drupal" => "drupal", "fa-empire" => "empire", "fa-facebook" => "facebook", "fa-flickr" => "flickr", "fa-foursquare" => "foursquare", "fa-git" => "git", "fa-github" => "github", "fa-gittip" => "gittip", "fa-google" => "google", "fa-html5" => "html5", "fa-instagram" => "instagram", "fa-joomla" => "joomla", "fa-jsfiddle" => "jsfiddle", "fa-linkedin" => "linkedin", "fa-linux" => "linux", "fa-maxcdn" => "maxcdn", "fa-openid" => "openid", "fa-pagelines" => "pagelines", "fa-pied-piper" => "pied", "fa-pinterest" => "pinterest", "fa-qq" => "qq", "fa-rebel" => "rebel", "fa-reddit" => "reddit", "fa-renren" => "renren", "fa-skype" => "skype", "fa-slack" => "slack", "fa-soundcloud" => "soundcloud", "fa-spotify" => "spotify", "fa-steam" => "steam", "fa-stumbleupon" => "stumbleupon", "fa-trello" => "trello", "fa-tumblr" => "tumblr", "fa-twitter" => "twitter", "fa-vine" => "vine", "fa-vk" => "vk", "fa-wechat" => "wechat", "fa-weibo" => "weibo", "fa-weixin" => "weixin", "fa-windows" => "windows", "fa-wordpress" => "wordpress", "fa-xing" => "xing", "fa-yahoo" => "yahoo", "fa-youtube" => "youtube", "fa-google-plus" => array("google +", "google plus", "googleplus"), "fa-hacker-news" => array("hackernews", "hacker news"), "fa-stack-exchange" => array("stackexchange", "stack exchange"), "fa-stack-overflow" => array("stackoverflow", "stack overflow")
+    public static $fa_social_icons = array("fa-android" => "android", "fa-apple" => "apple", "fa-behance" => "behance", "fa-bitbucket" => "bitbucket", "fa-bitcoin" => "bitcoin", "fa-btc" => "btc", "fa-codepen" => "codepen", "fa-css3" => "css3", "fa-delicious" => "delicious", "fa-deviantart" => "deviantart", "fa-digg" => "digg", "fa-dribbble" => "dribbble", "fa-dropbox" => "dropbox", "fa-drupal" => "drupal", "fa-empire" => "empire", "fa-facebook" => "facebook", "fa-flickr" => "flickr", "fa-foursquare" => "foursquare", "fa-git" => "git", "fa-github" => "github", "fa-gittip" => "gittip", "fa-google" => "google", "fa-html5" => "html5", "fa-instagram" => "instagram", "fa-joomla" => "joomla", "fa-jsfiddle" => "jsfiddle", "fa-linkedin" => "linkedin", "fa-linux" => "linux", "fa-maxcdn" => "maxcdn", "fa-openid" => "openid", "fa-pagelines" => "pagelines", "fa-pied-piper" => "pied", "fa-pinterest" => "pinterest", "fa-qq" => "qq", "fa-rebel" => "rebel", "fa-reddit" => "reddit", "fa-renren" => "renren", "fa-skype" => "skype", "fa-slack" => "slack", "fa-soundcloud" => "soundcloud", "fa-spotify" => "spotify", "fa-steam" => "steam", "fa-stumbleupon" => "stumbleupon", "fa-trello" => "trello", "fa-tumblr" => "tumblr", "fa-twitter" => "twitter", "fa-vine" => "vine", "fa-vk" => "vk", "fa-wechat" => "wechat", "fa-weibo" => "weibo", "fa-weixin" => "weixin", "fa-windows" => "windows", "fa-wordpress" => "wordpress", "fa-xing" => "xing", "fa-yahoo" => "yahoo", "fa-youtube" => "youtube", "fa-vimeo-square" => "vimeo", "fa-google-plus" => array("google +", "google plus", "googleplus"), "fa-hacker-news" => array("hackernews", "hacker news"), "fa-stack-exchange" => array("stackexchange", "stack exchange"), "fa-stack-overflow" => array("stackoverflow", "stack overflow")
     );
 
 
@@ -13,7 +11,7 @@ abstract class Utils {
         return array(
             'THEME_SLUG' => THEME_SLUG,
             'ajaxUrl' => site_url() . '/wp-admin/admin-ajax.php',
-            'nonce' => wp_create_nonce(THEME_TEAM . "-security")
+            'nonce' => wp_create_nonce(THEME_SLUG . "-port-security")
         );
     }
 
@@ -59,7 +57,7 @@ abstract class Utils {
         $get_post_type = get_post_type();
 
         // WooCommerce
-        $woo = Utils::dep_exists('woocommerce');
+        $woo = PhoenixTeam_Utils::dep_exists('woocommerce');
 
         if ($woo) {
             if (function_exists('is_shop')) {
@@ -67,7 +65,7 @@ abstract class Utils {
                 ob_start();
                 woocommerce_page_title();
                 $woo_title = ob_get_clean();
-            } 
+            }
         }
 
             echo '<div class="col-lg-6 pull-right"><div class="page-in-bread">';
@@ -136,7 +134,7 @@ abstract class Utils {
                 }
 
                 echo '<a href="' . get_permalink($parent) . '">' . $parent->post_title . '</a>';
-                
+
                 if ($showCurrent == 1)
                     echo ' ' . $delimiter . ' ' . $before . get_the_title() . $after;
 
@@ -200,18 +198,18 @@ abstract class Utils {
         $classes[] = 'marg25';
 ?>
         <div <?php comment_class($classes); ?> id="comment-<?php comment_ID() ?>">
-        
+
             <?php echo get_avatar( $comment, 80 ); ?>
             <div class="comm_name">
                 <?php echo get_comment_author(); ?> <span>- <?php echo get_comment_date('j F Y'); ?> <?php edit_comment_link(__('Edit', THEME_SLUG),'  ','' ); ?> <?php comment_reply_link(array_merge( $args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?></span>
             </div>
-        
+
             <?php if ($comment->comment_approved == '0') : ?>
                 <i class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.', THEME_SLUG) ?></i>
             <?php endif; ?>
 
             <p class="text_cont com_top"><?php echo get_comment_text() ?></p>
-        
+
         </div>
 
         <?php echo $divide_line; ?>
@@ -265,7 +263,7 @@ abstract class Utils {
             global $wp_query;
 
             $posts_per_page = (int) $wp_query->query_vars['posts_per_page'];
-            $paged = (int) $wp_query->query_vars['paged']; 
+            $paged = (int) $wp_query->query_vars['paged'];
             $max_page = $wp_query->max_num_pages;
         } else {
             $posts_per_page = (int) $_query->query_vars['posts_per_page'];
@@ -326,7 +324,7 @@ abstract class Utils {
                     $out.= '<a class="page" href="'.get_pagenum_link($i).'">'.$i.'</a>';
                 }
             }
-            
+
             if ($stepLink && $end_page < $max_page) {
                 for ($i = $end_page + 1; $i <= $max_page; $i++) {
                     if ($i % $stepLink == 0 && $i !== $num_pages) {
@@ -339,7 +337,7 @@ abstract class Utils {
             if ($end_page < $max_page) {
                 if($dotright_text && $end_page!=($max_page-1)) $out.= '<span class="extend page">'.$dotright_text2.'</span>';
             }
-            
+
             if ($nexttext && $paged != $end_page) {
                 $out .= '<a class="nextpostslink" href="'.get_pagenum_link(($paged+1)).'">'.$nexttext.'</a>';
             } elseif ($nexttext) {
@@ -364,12 +362,12 @@ abstract class Utils {
     public static function is_blog ()
     {
         global $is_blog;
-        
+
         if ($is_blog == true)
             return true;
 
         $blog_page_id = theme_get_option('blog','blog_page');
-        
+
         if (empty($blog_page_id))
             return false;
 
@@ -377,7 +375,7 @@ abstract class Utils {
             $is_blog = true;
             return true;
         }
-        
+
         return false;
     }
 
@@ -389,7 +387,7 @@ abstract class Utils {
 
 
     public static function check_posts_page ()
-    {    
+    {
         if (get_option('show_on_front') == 'page') {
 
             $page_id = get_option('page_for_posts');
@@ -398,7 +396,7 @@ abstract class Utils {
                 $page = get_post($page_id);
             else
                 $page = false;
-                
+
         } else {
             $page = false;
         }
@@ -417,6 +415,7 @@ abstract class Utils {
 
             $address = isset($data['top_address']) ? $data['top_address'] : null;
             $phone_number = isset($data['top_phone_number']) ? $data['top_phone_number'] : null;
+            $email_as_link = isset($data['top_email_as_link']) ? $data['top_email_as_link'] : null;
             $email = isset($data['top_email']) ? $data['top_email'] : null;
 
             $top_contacts = '<ul class="contact-top">';
@@ -427,8 +426,13 @@ abstract class Utils {
             if ($phone_number)
                 $top_contacts .= '<li><i class="icon-mobile"></i> '. $phone_number . '</li>';
 
-            if ($email)
-                $top_contacts .= '<li><i class="icon-mail"></i> '. antispambot($email) . '</li>';
+            if ($email && $email_as_link) {
+                $email = antispambot($email);
+                $top_contacts .= '<li><i class="icon-mail"></i> <a target="_blank" href="mailto:'. $email .'">'. $email . '</a></li>';
+            } elseif ($email) {
+                $email = antispambot($email);
+                $top_contacts .= '<li><i class="icon-mail"></i> '. $email . '</li>';
+            }
 
             $top_contacts .= '</ul>';
 
@@ -514,10 +518,13 @@ abstract class Utils {
     public static function single_socials ()
     {
         global $data;
-        
+
         $show_socials = isset($data['show_single_socials']) ? $data['show_single_socials'] : false;
         $socials = isset($data['single_socil_buttons']) ? $data['single_socil_buttons'] : null;
+
         if ($show_socials && $socials) {
+
+            $socials = array_unique($socials);
 
             $return = '<div class="soc-blog-single"><ul class="soc-blog">';
 
@@ -554,14 +561,14 @@ abstract class Utils {
             $return .= "<script>
                             ( function($) {
                                 $('.soc-blog-single a').click(function(e){
-            
+
                                     e.preventDefault();
-            
+
                                     var thisOne = $(this),
                                         thisName = thisOne.attr('title'),
                                         thisLink = null,
                                         pageLink = encodeURIComponent(document.URL);
-            
+
                                     switch (thisName) {
                                         case 'Facebook':
                                             thisLink = '//www.facebook.com/sharer/sharer.php?u=';
@@ -587,7 +594,7 @@ abstract class Utils {
                                         default:
                                             break;
                                     }
-            
+
                                     openShareWindow(thisLink + pageLink, thisName);
                                 });
 
@@ -596,7 +603,7 @@ abstract class Utils {
                                     var topvar = (screen.height-480)/2;
                                     var openWindow = window.open(link, name, 'width=640,height=480,left='+leftvar+',top='+topvar+',status=no,toolbar=no,menubar=no,resizable=yes');
                                 }
-            
+
                             } )(jQuery);
                         </script>\n";
 
@@ -702,19 +709,19 @@ abstract class Utils {
         if ($favicon)
             $icons = '<link rel="shortcut icon" href="'. esc_url($favicon) .'" />' . "\n";
         $favicon_iphone = isset($data['favicon_iphone']['url']) ? $data['favicon_iphone']['url'] : null;
-        
+
         if ($favicon_iphone)
             $icons .= '<link rel="apple-touch-icon-precomposed" sizes="144x144" href="'. esc_url($favicon_iphone) .'" />' . "\n";
         $favicon_retina_iphone = isset($data['favicon_retina_iphone']['url']) ? $data['favicon_retina_iphone']['url'] : null;
-        
+
         if ($favicon_retina_iphone)
             $icons .= '<link rel="apple-touch-icon-precomposed" sizes="114x114" href="'. esc_url($favicon_retina_iphone) .'" />' . "\n";
         $favicon_ipad = isset($data['favicon_ipad']['url']) ? $data['favicon_ipad']['url'] : null;
-        
+
         if ($favicon_ipad)
             $icons .= '<link rel="apple-touch-icon-precomposed" sizes="72x72" href="'. esc_url($favicon_ipad) .'" />' . "\n";
         $favicon_retina_ipad = isset($data['favicon_retina_ipad']['url']) ? $data['favicon_retina_ipad']['url'] : null;
-        
+
         if ($favicon_retina_ipad)
             $icons .= '<link rel="apple-touch-icon-precomposed" href="'. esc_url($favicon_retina_ipad) .'" />' . "\n";
 

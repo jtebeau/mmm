@@ -1182,9 +1182,9 @@ ul.switcher-op-selectors li  a {
     font: 400 13px/16px sans-serif;
     text-align: center;
 }
-.cl-blog-img { display: inline-block; }
-.cl-blog-img img { width: 50% !important; }
-.cl-blog-naz { margin-top: 20px; }
+.cl-blog-img { display: inline-block }
+.cl-blog-img img { width: 100% }
+.cl-blog-naz { margin-top: 20px }
 .cl-blog-name {
     padding-left: 75px;
     font-size: 19px;

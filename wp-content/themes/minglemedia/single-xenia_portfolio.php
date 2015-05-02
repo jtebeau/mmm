@@ -23,6 +23,7 @@ if (have_posts()) :
 
         $post_subtitle  =   rwmb_meta(THEME_SLUG . '_subtitle');
         $post_crumbs    =   rwmb_meta(THEME_SLUG . '_port_breadcrumbs');
+        $port_cat       =   rwmb_meta(THEME_SLUG . '_portfolio_recent_works_cat');
 ?>
         <div class="page-in">
           <div class="container">
@@ -40,9 +41,9 @@ if (have_posts()) :
               </div>
 <?php
                 if ($gen_crumbs && $post_crumbs === '-1') :
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
                 elseif ($post_crumbs === '1') :
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
                 else :
                     echo "<!-- Breadcrumbs turned off -->\n";
                 endif;
@@ -224,6 +225,17 @@ if (have_posts()) :
         'paged' => $ajaxPaged,
         'post__not_in' => $thisID
     );
+
+    if ($port_cat && $port_cat != 'none') {
+        $query_args['tax_query'] = array(
+            array(
+                'taxonomy' => THEME_SLUG . '_portfolio_category',
+                'field'    => 'term_id',
+                'include_children' => true,
+                'terms' => $port_cat
+            )
+        );
+    }
 
     $query = new WP_Query($query_args);
 

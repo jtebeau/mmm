@@ -39,7 +39,7 @@
         if ($page_bgcol) {
 
             if ($bgcol_opac && $bgcol_opac != 1) {
-                $page_bgcol = PhoenixTeam\Utils::hex_to_rgb($page_bgcol);
+                $page_bgcol = PhoenixTeam_Utils::hex_to_rgb($page_bgcol);
                 $page_bgcol = 'rgba('. $page_bgcol .','. $bgcol_opac .')';
             }
             
@@ -75,9 +75,9 @@
                   </div>
 <?php
                 if ($gen_crumbs && !$page_crumbs || $gen_crumbs && $page_crumbs === '-1') :
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
                 elseif ($page_crumbs === '1') :
-                    PhoenixTeam\Utils::breadcrumbs();
+                    PhoenixTeam_Utils::breadcrumbs();
                 else :
                     echo "<!-- Breadcrumbs turned off -->";
                 endif;

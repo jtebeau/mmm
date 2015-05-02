@@ -10,7 +10,7 @@ $access_token = '1395807720-LNsy6yfB0CxzxDkV7y508yW4wk6PyJlc8trtGmV';
 // Twitter App Access Token Secret
 $access_secret = "MVBFXPIDLVz4yRUgasFM120X8lt4TZRp7hif0t3KQIw";
 
-$cb = PhoenixTeam\Codebird::getInstance();
+$cb = PhoenixTeam_Codebird::getInstance();
 $GLOBALS[THEME_SLUG .'_twitter'] = $cb;
 $cb->setConsumerKey( $consumer_key, $consumer_secret );
 $cb->setToken( $access_token, $access_secret );

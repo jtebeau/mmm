@@ -32,30 +32,23 @@
             });
     // }
 
+    // Portfolio Page Categoriy        
+        var template = $('#page_template'),
+            templateVal = template.val(),
+            catSelect = $('#xenia_page_portfolio_cat');
 
-        // var template = $('#page_template'),
-        //     templateVal = template.val(),
-        //     tinyMCE = $('#postdivrich'),
-        //     vpbvc = $('#wpb_visual_composer'),
-        //     vpbvc_swith = $('.composer-switch');
+        if (templateVal === 'template-portfolio.php') {
+        } else {
+            catSelect.parent().parent().hide();
+        }
 
-        // if (templateVal === 'template-portfolio.php') {
-        //     vpbvc_swith.hide();
-        //     tinyMCE.hide();
-        //     vpbvc.hide();
-        // }
-
-        // template.on('change', function () {
-        //     if ($(this).val() === 'template-portfolio.php') {
-        //         vpbvc_swith.slideUp();
-        //         tinyMCE.slideUp();
-        //         vpbvc.slideUp();
-        //     } else {
-        //         vpbvc_swith.slideDown();
-        //         tinyMCE.slideDown();
-        //         vpbvc.slideDown();
-        //     }
-        // });
+        template.on('change', function () {
+            if ($(this).val() === 'template-portfolio.php') {
+                catSelect.parent().parent().slideDown();
+            } else {
+                catSelect.parent().parent().slideUp();
+            }
+        });
 
 
     // Layout && Widgets Area Relations

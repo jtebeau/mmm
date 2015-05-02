@@ -110,8 +110,17 @@ class PhoenixTeam_Shortcodes_Mapper {
                     "type" => "textfield",
                     "heading" => __("Title", THEME_SLUG),
                     "param_name" => "title",
-                    "description" => __('Email will be sent to ', THEME_SLUG).'<u>'. $email[0] .'</u> '. __('and other addresses that you have chosen.', THEME_SLUG) .'<br/><a href="'. admin_url() .'?page='. THEME_SLUG .'_options&tab=7">'. __('Change email(s)', THEME_SLUG). '</a>'
-                )
+                    "description" => __('Email will be sent to ', THEME_SLUG).'<u>'. $email[0] .'</u> '. __('and other addresses that you have chosen.', THEME_SLUG) .'<br/><a href="'. admin_url() .'?page='. THEME_SLUG .'_options&tab=8">'. __('Change email(s)', THEME_SLUG). '</a>'
+                ),
+                array(
+                    "type" => "checkbox",
+                    "param_name" => "attachment",
+                    "holder" => "div",
+                    "class" => "",
+                    "heading" => __("Show attachment field?", THEME_SLUG),
+                    "description" => __("Adds ability to send files using this form.", THEME_SLUG),
+                    "value" => array( 'Show' => true),
+                ),
             )
         ) );
     }
@@ -461,7 +470,16 @@ class PhoenixTeam_Shortcodes_Mapper {
                         "class" => "",
                         "heading" => __("Use popup?", THEME_SLUG),
                         "description" => __("Show carousel pictures in popup?", THEME_SLUG),
-                        "value" => null
+                        "value" => array("Yes" => true)
+                    ),
+                    array(
+                        "type" => "checkbox",
+                        "param_name" => "autoplay",
+                        "holder" => "div",
+                        "class" => "",
+                        "heading" => __("Use autoscroll?", THEME_SLUG),
+                        "description" => __("The carousel will scrolls automatically.", THEME_SLUG),
+                        "value" => array("Yes" => true)
                     ),
                 )
             )
@@ -557,6 +575,35 @@ class PhoenixTeam_Shortcodes_Mapper {
                         'description' => ''
                     ),
                     array(
+                        'type' => 'textfield',
+                        "holder" => "div",
+                        "class" => "",
+                        'heading' => __( 'Link', THEME_SLUG ),
+                        'param_name' => 'link',
+                        'value' => '',
+                        'description' => ''
+                    ),
+                    array(
+                        'type' => 'dropdown',
+                        'heading' => __( 'Where to put link?', THEME_SLUG ),
+                        'param_name' => 'link_place',
+                        'value' => array(
+                            __('To icon', THEME_SLUG) => "icon",
+                            __('To data', THEME_SLUG) => "data",
+                            __('To description', THEME_SLUG) => "text",
+                        ),
+                        'admin_label' => true
+                    ),
+                    array(
+                        "type" => "checkbox",
+                        "param_name" => "target",
+                        "holder" => "div",
+                        "class" => "",
+                        "heading" => __("Open this link in another tab?", THEME_SLUG),
+                        "description" => "",
+                        "value" => array('Yes' => true),
+                    ),
+                    array(
                         'type' => 'css_editor',
                         'heading' => __( 'Css', THEME_SLUG ),
                         'param_name' => 'css',
@@ -619,6 +666,24 @@ class PhoenixTeam_Shortcodes_Mapper {
                             __('Block', THEME_SLUG) => 'block',
                             __('List', THEME_SLUG) => 'list'
                         )
+                    ),
+                    array(
+                        'type' => 'textfield',
+                        "holder" => "div",
+                        "class" => "",
+                        'heading' => __( 'Link', THEME_SLUG ),
+                        'param_name' => 'link',
+                        'value' => '',
+                        'description' => ''
+                    ),
+                    array(
+                        "type" => "checkbox",
+                        "param_name" => "target",
+                        "holder" => "div",
+                        "class" => "",
+                        "heading" => __("Open this link in another tab?", THEME_SLUG),
+                        "description" => "",
+                        "value" => array('Yes' => true),
                     ),
                     array(
                         'type' => 'css_editor',

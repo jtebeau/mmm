@@ -1,6 +1,6 @@
 <?php
 
-// namespace PhoenixTeam;
+new PhoenixTeam_Shortcodes();
 
 class PhoenixTeam_Shortcodes {
 
@@ -35,35 +35,71 @@ class PhoenixTeam_Shortcodes {
     public function facts ($attrs, $content = null)
     {
         extract( shortcode_atts(array(
-            "icon" => null,
-            "data" => null,
-            "name" => null,
-            "css" => null
+            "icon"       => null,
+            "data"       => null,
+            "name"       => null,
+            "css"        => null,
+            "link"       => null,
+            "link_place" => null,
+            "target"     => null
         ), $attrs) );
 
         $vcCssClass = null;
-        if (function_exists('vc_shortcode_custom_css_class')) {
+        if (function_exists('vc_shortcode_custom_css_class'))
             $vcCssClass = vc_shortcode_custom_css_class( $css, ' ' );
-        }
 
-        if ($icon) {
+        if ($icon)
             $icon = '<div class="fact-icon"><i class="'. $icon .'"></i></div>';
-        }
 
-        if ($data) {
+        if ($data)
             $data = '<div class="fact-numb">'. $data .'</div>';
-        }
 
-        if ($name) {
+        if ($name)
             $name = '<div class="fact-name">'. $name .'</div>';
-        }
 
-        $return =
-        '<div class="phoenix--sortcode-facts'. $vcCssClass .'">' .
-            $icon .
-            $data .
-            $name .
-        '</div>';
+        if ($target)
+            $target = ' target="_blank"';
+
+        if ($link) {
+            $link = '<a class="phoenix-facts-link" href="'. $link .'"'. $target .'>';
+
+            if ($link_place == "icon") {
+                $return =
+                '<div class="phoenix-shortcode-facts'. $vcCssClass .'">' .
+                    $link .
+                    $icon .
+                    '</a>' .
+                    $data .
+                    $name .
+                '</div>';
+            } elseif ($link_place == 'data') {
+                $return =
+                '<div class="phoenix-shortcode-facts'. $vcCssClass .'">' .
+                    $icon .
+                    $link .
+                    $data .
+                    '</a>' .
+                    $name .
+                '</div>';
+            } elseif ($link_place == 'text') {
+                $return =
+                '<div class="phoenix-shortcode-facts'. $vcCssClass .'">' .
+                    $icon .
+                    $data .
+                    $link .
+                    $name .
+                    '</a>' .
+                '</div>';
+            }
+
+        } else {
+            $return =
+            '<div class="phoenix-shortcode-facts'. $vcCssClass .'">' .
+                $icon .
+                $data .
+                $name .
+            '</div>';
+        }
 
         return $return;
     }
@@ -88,8 +124,7 @@ class PhoenixTeam_Shortcodes {
             $postsbox = array(
                 "post_type" => "post",
                 "post_status" => array("publish", "private"),
-                "posts_per_page" => $qty,
-                "paged" => false
+                "showposts" => $qty,
             );
 
             if ($cat && $cat != "cat == false")
@@ -99,14 +134,13 @@ class PhoenixTeam_Shortcodes {
             $el_class = 'blog-main';
 
             $postsbox = new WP_Query($postsbox);
-            
+
             if (!isset($postsbox->post))
                 return false;
 
             if ($postsbox->have_posts()) {
                 while($postsbox->have_posts()) {
                     $postsbox->the_post();
-
 
                     $ID = get_the_ID();
                     $title = get_the_title();
@@ -197,7 +231,7 @@ class PhoenixTeam_Shortcodes {
 
         if ($layout == 'slider') {
             $cnt = 0;
-            $return = 
+            $return =
             '<div class="prl-1'. $vcCssClass .'">
                 <div class="prlx">
                     <div class="container">
@@ -212,7 +246,7 @@ class PhoenixTeam_Shortcodes {
         }
 
         $ol = '<ol class="carousel-indicators">';
-        
+
         for ($i = 0; $i < $testimonials->post_count; $i++) {
             $acti = null;
             if ($i == 0) {
@@ -324,7 +358,8 @@ class PhoenixTeam_Shortcodes {
     public function widget_contact_form ($attrs, $content = null)
     {
         extract( shortcode_atts(array(
-            'css' => null
+            'css' => null,
+            'attachment' => null,
         ), $attrs) );
 
         $type = 'PhoenixTeam_Widget_ContactForm';
@@ -454,7 +489,7 @@ class PhoenixTeam_Shortcodes {
             if ($about)
                 $about = '<div class="about-texts">'.$about.'</div>';
 
-            $socials = PhoenixTeam\Utils::get_member_socials($id);
+            $socials = PhoenixTeam_Utils::get_member_socials($id);
 
             $socials_html = null;
             $socials_before = null;
@@ -465,13 +500,13 @@ class PhoenixTeam_Shortcodes {
 
                 for ($i=0; $i < $count; $i++) {
                     if ($socials[$i]['url']) {
-                        $socials_html .= '<li><a href="'.$socials[$i]['url'].'" title="'.$title.' '.$socials[$i]['name'].' '.__("profile", THEME_SLUG).'"><i class="fa '.$socials[$i]['icon'].'"></i></a></li>';
+                        $socials_html .= '<li><a target="_blank" href="'.$socials[$i]['url'].'" title="'.$title.' '.$socials[$i]['name'].' '.__("profile", THEME_SLUG).'"><i class="fa '.$socials[$i]['icon'].'"></i></a></li>';
                     }
                 }
             }
 
             if ($email) {
-                $socials_html .= '<li><a href="mailto:'. antispambot($email) .'"><i class="fa fa-envelope"></i></a></li>';
+                $socials_html .= '<li><a target="_blank" href="mailto:'. antispambot($email) .'"><i class="fa fa-envelope"></i></a></li>';
             }
 
             if ($socials_html) {
@@ -480,12 +515,12 @@ class PhoenixTeam_Shortcodes {
             }
 
             $return = '
-                <div class="phoenix-shortcode-about-us about-us'. $vcCssClass .'"> 
+                <div class="phoenix-shortcode-about-us about-us'. $vcCssClass .'">
                     <div class="row">
                         <div class="col-lg-6 col-md-12 col-sm-6 col-xs-6 col-ms-12">' .
                             $pic .
                         '</div>' .
-                        '<div class="col-lg-6 col-md-12 col-sm-6 col-xs-6 col-ms-12">'. 
+                        '<div class="col-lg-6 col-md-12 col-sm-6 col-xs-6 col-ms-12">'.
                             '<div class="about-name">'.$title.'</div>' .
                             $position .
                             $about .
@@ -518,17 +553,44 @@ class PhoenixTeam_Shortcodes {
         if (function_exists('vc_shortcode_custom_css_class')) {
             $vcCssClass = vc_shortcode_custom_css_class( $css, ' ' );
         }
-        
+
         if ($images && count($images) > 0) {
             $images = explode( ',', $images );
         } else {
             return '<div class="phoenix-clients-carousel"><p>'. __("You didn't select any image.", THEME_SLUG) .'</p></div>';
         }
 
+        $uID = null;
+        $script = null;
+
+        if ($autoplay) {
+            $uID = 'jcarousel-shortcode-id-' . uniqid();
+            $script =
+            "<script>
+                (function($) {
+                    'use strict';
+
+                    // Set autoscroll
+                    $(function() {
+                        setTimeout(function() {
+                            var jcarousel = $('#". $uID ."');
+
+                            // console.log(jcarousel);
+
+                            jcarousel.jcarouselAutoscroll({
+                                target: '+=1'
+                            });
+                        });
+                    }, 2000);
+
+                })(jQuery);
+            </script>";
+        }
+
         $return =
         '<div class="phoenix-clients-carousel'. $vcCssClass .'">
         <div class="jcarousel-wrapper">
-          <div class="jcarousel">
+          <div class="jcarousel" id="'. $uID .'">
             <ul>';
 
 
@@ -553,6 +615,7 @@ class PhoenixTeam_Shortcodes {
         }
 
         $return .= '</div></div>';
+        $return .= $script;
 
         return $return;
     }
@@ -568,7 +631,9 @@ class PhoenixTeam_Shortcodes {
             'id' => null,
             'title' => null,
             'layout' => 'block',
-            'css' => null
+            'css' => null,
+            "link"  => null,
+            "target" => null
         ), $attrs) );
 
         $vcCssClass = null;
@@ -597,18 +662,28 @@ class PhoenixTeam_Shortcodes {
             $icon = rwmb_meta(THEME_SLUG . '_services_icons_list', null, $id);
             $text = rwmb_meta(THEME_SLUG . '_services_text', null, $id);
 
+            if ($target)
+                $target = ' target="_blank"';
+
+            if ($link) {
+                $link = '<a class="phoenix-service-link" href="'. $link .'"'. $target .'>';
+                $link_closed = '</a>';
+            } else {
+                $link = $link_closed = null;
+            }
+
             if ($layout == 'list') {
                 $return = '
                     <div class="other-serv'. $vcCssClass .'">
-                        <div class="serv-icon"><i class="fa '.$icon.'"></i></div>
+                        <div class="serv-icon">'. $link .'<i class="fa '.$icon.'"></i>'. $link_closed .'</div>
                         <div class="serv-name">'.$title.'</div>
                         <div class="serv-desc">'.$text.'</div>
                     </div>';
-            } else {            
+            } else {
                 $return = '
-                    <div class="hi-icon-effect'. $vcCssClass .'">
-                        <div class="hi-icon fa '.$icon.'"></div>
-                        <div class="service-name">'.$title.'</div>
+                    <div class="hi-icon-effect'. $vcCssClass .'">' .
+                        $link . '<div class="hi-icon fa '. $icon .'"></div>' . $link_closed .
+                        '<div class="service-name">'.$title.'</div>
                         <div class="service-text">'.$text.'</div>
                     </div>';
             }
@@ -667,7 +742,7 @@ class PhoenixTeam_Shortcodes {
 
                 $thumb_params = array('width' => 555,'height' => 416, 'crop' => true);
                 $thumb = null;
-                
+
                 $title = get_the_title();
                 $author = rwmb_meta(THEME_SLUG . '_portfolio_author');
                 $link = get_permalink();
@@ -704,7 +779,7 @@ class PhoenixTeam_Shortcodes {
                         </ul>
                     </div>
                     <div class="col-lg-12">
-                        <div class="button-center"><a href="#" class="btn-simple cbp-l-loadMore-button-link">Load Full Portfolio</a></div>
+                        <div class="button-center"><a href="#" class="btn-simple cbp-l-loadMore-button-link">'. __('Load Full Portfolio', THEME_SLUG) .'</a></div>
                     </div>
                 </div>
             </div>';
@@ -786,5 +861,3 @@ class PhoenixTeam_Shortcodes {
     }
 
 }
-
-new PhoenixTeam_Shortcodes();
