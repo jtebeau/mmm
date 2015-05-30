@@ -90,9 +90,12 @@
 
 @media screen and (max-width: 991px) { 
     .container-in-container {
-width: 100%;
-margin: auto;
+    width: 100%;
+    margin: auto;
 }
+
+/* blog featured image */
+.cl-blog-img img { width: 100%; }
 
 .phoenix-right-page-layout .container-in-container{
     width: 100%;
@@ -117,9 +120,9 @@ margin: auto;
 
 
 .menu {
-float: right;
-position: relative;
-z-index: 9999;
+    float: right;
+    position: relative;
+    z-index: 9999;
 }
 .navbar-collapse {
     margin-bottom: 30px;
@@ -128,9 +131,9 @@ z-index: 9999;
     right: 48px;
 }
 .navbar-collapse.in {
-overflow-y: auto;
-position: absolute;
-right: 48px;
+    overflow-y: auto;
+    position: absolute;
+    right: 48px;
 }
     div.alignleft {
     float: left;
@@ -172,14 +175,14 @@ nav.sticky ul li a {
     width: 100%;
 }
 .menu ul li ul li ul li a {
-padding: 15px 20px 15px 75px;
+    padding: 15px 20px 15px 75px;
 }
 .menu ul li ul {
     border-top: none;
     box-shadow:none;
 }
 .menu ul li.current-menu-item a, .menu ul li.current_page_item a {
-color: #fff;
+    color: #fff;
 }
 
     .menu ul li ul, .menu ul li li ul, .menu ul li li li ul {

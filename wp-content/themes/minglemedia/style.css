@@ -1,17 +1,10 @@
 /*
-    Theme Name: Xenia
+    Theme Name: Mingle Media Marketing
     Theme URI: http://xenia.phoenix-theme.com/
-    Author: Phoenix Team
-    Author URI: http://themeforest.net/user/PhoenixTeam
-    Description: Powerful WordPress theme designed in a clean and minimalistic style. This theme can be used for any type of website, business, corporate, portfolio, products, marketing, etc. Xenia has been coded with love in PHP, HTML5, CSS3 and JavaScript. It is compatible with such premium plugins like WPBakery Visual Composer & Themepunch Slider Revolution, and it is supplied with them.
-    Text Domain: xenia
-    Domain Path: /lang
-    Description: Xenia - Refined WordPress Corporate Theme
-    Tags: animations, business, clean, corporate, creative, elegant, minimal, modern, multi-purpose, parallax, portfolio, professional, responsive, retina, white
-    Version: 2.3.1
     License: GNU General Public License version 3.0
     License URI: http://www.gnu.org/licenses/gpl-3.0.html
 */
+
 .alignnone { margin: 5px 20px 20px 0 }
 .aligncenter,
 div.aligncenter {
@@ -98,7 +91,7 @@ a, button, input[type="submit"] {
 }
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     font-family: Roboto, Raleway, 'Open Sans', Arial, sans-serif;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 1.1;
     color: inherit;
     color: #555;
@@ -164,7 +157,7 @@ nav {
     background: rgba(255,255,255,1);
 }
 .menu ul ul { width: auto !important }
-.menu ul ul li { width: 180px;
+.menu ul ul li { width: 180px; 
 }
 .menu ul li.sub li {
     width: 140px;
@@ -205,8 +198,8 @@ nav {
     padding: 37px 23px;
     color: #666;
     text-decoration: none;
-    font-weight: 300;
-    font-size: 14px;
+    font-weight: 500;
+    font-size: 20px;
     display: block;
     -webkit-transition: color 0.25s ease;
     -moz-transition: color 0.25s ease;
@@ -353,8 +346,8 @@ nav.sticky ul li a:before { content: '' }
     height: 100%;
     border-radius: 50%;
     content: '';
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box; 
+    -moz-box-sizing: content-box; 
     box-sizing: content-box;
 }
 .hi-icon-effect .hi-icon {
@@ -407,7 +400,7 @@ nav.sticky ul li a:before { content: '' }
 }
 .container-color {
     background: #fafafa;
-    padding: 50px 0;
+    padding: 50px 0; 
     border-top:1px solid #f2f2f2;
 }
 .grid figure {
@@ -514,15 +507,15 @@ nav.sticky ul li a:before { content: '' }
     color:#fff;
     margin-right: 47px;
 }
-@keyframes krasnaya {
+@keyframes krasnaya { 
     0% { border: 1px solid #fff }
     100% { border: 1px solid #00C0E3 }
 }
-@-webkit-keyframes krasnaya {
+@-webkit-keyframes krasnaya { 
     0% { border: 1px solid #fff }
     100% { border: 1px solid #00C0E3 }
 }
-@-moz-keyframes krasnaya {
+@-moz-keyframes krasnaya { 
     0% { border: 1px solid #fff }
     100% { border: 1px solid #00C0E3 }
 }
@@ -632,7 +625,7 @@ nav.sticky ul li a:before { content: '' }
     -webkit-backface-visibility: hidden;
 }
 .blog-desc a{
-    color: #aaa;
+    color: #aaa;    
     font-size: 11px;
 
     font-weight: 300;
@@ -641,7 +634,7 @@ nav.sticky ul li a:before { content: '' }
     text-decoration: underline;
 }
 .footer {
-    background: #f9f9f9;
+    background: #04395D;
     min-height: 150px;
     max-height: 100%;
     border-top: 1px solid #eee;
@@ -652,7 +645,7 @@ nav.sticky ul li a:before { content: '' }
     font-size: 13px;
 }
 .footer-widget .soc-footer li{
-    padding: 0;
+    padding: 0; 
     border: none;
 }
 .contact-footer li {
@@ -719,10 +712,10 @@ nav.sticky ul li a:before { content: '' }
 }
 .flickr_widget_wrapper .flickr_badge_image img {
     border-radius: 2px;
-     width: auto;
-     height: auto;
-     max-width: 100%;
-     max-height: 100%;
+     width: auto; 
+     height: auto; 
+     max-width: 100%; 
+     max-height: 100%; 
 }
 .soc-footer { margin: 0px }
 .soc-footer li {
@@ -740,15 +733,15 @@ nav.sticky ul li a:before { content: '' }
     text-decoration: none;
 }
 .footer-bottom {
-    border-top: 1px solid #eee;
+    border-top: 1px solid #255474;
     margin-top: 40px;
     line-height: 35px;
 
     font-size: 12px;
     font-weight: 300;
-    color: #777;
+    color: #FFF;
 }
-.footer-bottom a { color: #777 }
+.footer-bottom a { color: #FFF }
 .foot_menu { float: right }
 .foot_menu ul {margin:0px;}
 .foot_menu ul li {
@@ -760,7 +753,7 @@ nav.sticky ul li a:before { content: '' }
 
     font-size: 12px;
     font-weight: 300;
-    color: #777;
+    color: #FFF;
     text-decoration: none;
 }
 .foot_menu ul li a:hover { text-decoration: underline }
@@ -1145,11 +1138,12 @@ ul.switcher-op-selectors li  a {
 .copyright { display: block }
 .cbp-l-inline { margin-top: 0px }
 .page-in {
-    border-top: 1px solid #eee;
-    border-bottom: 1px solid #eee;
-    background: #f9f9f9;
+    border-top: 1px solid #87BE4D;
+    border-bottom: 1px solid #87BE4D;
+    background: #87BE4D;
     min-height: 82px;
     line-height: 82px;
+    color: #FFF;
 }
 .cbp-l-filters-button .cbp-filter-item {
     background-color: #FFF;
@@ -1280,10 +1274,15 @@ ul.switcher-op-selectors li  a {
     font: 400 13px/16px sans-serif;
     text-align: center;
 }
+/* blog image featured on single post */
+.single-post .bx-wrapper { display:none; }
+.single-post .cl-blog-img img { display:none; }
+
+/* blog image featured */
 .cl-blog-img { display: inline-block; width: 100%; }
-.cl-blog-img img { width: 100% }
+.cl-blog-img img { width: 100% !important }
 .medium-blog .cl-blog-naz { margin-top: 0px }
-.medium-blog .cl-blog-text {width: 390px;}
+.medium-blog .cl-blog-text {width: 100%;}
 .cl-blog-naz { margin-top: 20px }
 .cl-blog-name {
     padding-left: 75px;
@@ -1307,7 +1306,6 @@ ul.switcher-op-selectors li  a {
     padding-right: 10px;
 }
 .cl-blog-detail {
-    margin-left: 75px;
     margin-top: 8px;
     font-size: 12px;
     font-weight: 300;
@@ -1320,7 +1318,6 @@ ul.switcher-op-selectors li  a {
 .cl-blog-text {
     float: left;
     margin-top: 15px;
-    margin-left: 75px;
     line-height: 1.6;
     color: #555;
     font-weight: 300;
@@ -1464,7 +1461,7 @@ ul.switcher-op-selectors li  a {
     display: inline-block;
     margin-top: 35px;
 }
-.author-bio { margin-top: 30px; display: inline-block; width: 100% }
+.author-bio { display:none; }
 .img-author { float: left }
 .img-author img.img_comm {
     float: none;
@@ -1740,11 +1737,13 @@ ul.switcher-op-selectors li  a {
     outline: none;
 }
 .input-cont-textarea {
-    border: 1px solid #eee;
-    padding: 5px 10px;
+    border: 0;
+    padding: 7px 10px;
     width: 100%;
-    margin-bottom: 10px;
+    color: #FFF;
+    font-weight: 300;
     outline: none;
+    background-color:#2A6288;
 }
 .soc-contacts { margin: 0px }
 .soc-contacts li {
@@ -2310,7 +2309,7 @@ padding: 5px 0;
 .recentcomments a:before {
 content: '' !important;
 padding-right: 0 !important;
-}
+} 
 
 .tagcloud a {
     display: inline-block;
@@ -2369,32 +2368,52 @@ padding-right: 0 !important;
 .footer-widget a{font-weight: 300;}
 .footer-widget {font-weight: 300;}
 .footer-widget .widget-title {
-
     font-size: 19px;
-font-weight: 300;
-color: #777;
-padding-bottom: 20px;
-
-
+    font-weight: 300;
+    color: #FFF;
+    padding-bottom: 20px;
 }
 
 
 .footer-widget ul li {
     padding: 9px 0;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #255474;
 }
 .footer-widget ul li a{
 display: inline-block;
-
+color: #FFF;
 }
 
 
-.footer-widget input {border: 1px solid #eee;
-padding: 7px 10px;
-width: 100%;
-color: #666;
-font-weight: 300;
-outline: none;}
+.footer-widget input {
+    border: 0;
+    padding: 7px 10px;
+    width: 100%;
+    color: #FFF;
+    font-weight: 300;
+    outline: none;
+    background-color:#2A6288;
+}
+
+.footer-widget input:focus {
+    background-color: #3881B3;
+}
+
+.footer-widget ::-webkit-input-placeholder {
+   color: #FFF;
+}
+
+.footer-widget :-moz-placeholder { /* Firefox 18- */
+   color: #FFF;  
+}
+
+.footer-widget ::-moz-placeholder {  /* Firefox 19+ */
+   color: #FFF;  
+}
+
+.footer-widget :-ms-input-placeholder {  
+   color: #FFF;  
+}
 
 .widget_phoenixteam_flickr .flickr_widget_wrapper a {
     display: block;
@@ -2570,7 +2589,7 @@ margin-bottom: 0px !important;
 }
 .tp-caption .largebutton:hover {
     color:#fff;
-    background: rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.25); 
     text-decoration: none;
 }
 
@@ -2583,7 +2602,6 @@ margin-bottom: 0px !important;
     padding-right: 15px;
     max-width: 100%;
 }
-
 .container-fullwidth {width: 100%;}
 
 
@@ -3292,4 +3310,63 @@ div.widget:nth-of-type(1) .widget-title {margin-top: 0px;}
 .wpb_wrapper .gallery {
     overflow: hidden;
     width: 100%;
+}
+
+/* CUSTOM STYLING */
+.service-name { font-weight: 500; }
+
+.single-post .page-in { display:none; }
+
+.single-post .marg50 {margin: 0; } 
+
+.single-post .cl-blog-naz { margin: 0;}
+
+.single-post a, .single-post a:active, .single-post a:current { color: #05385D; }
+
+.single-post .footer { display:none;}
+
+.widget-title {font-weight: 500;}
+
+.single-post .aweber {margin-top: 25px;}
+
+/* LANDING PAGE TEMPLATE */
+
+.page-template-template-landing-page-php .footer {display:none;}
+
+.page-template-template-landing-page-php .page_head {display: none;}
+
+.page-template-template-landing-page-php header {display: none;}
+
+.page-template-template-landing-page-php .page-in {display: none;}
+
+.landing-page-template { margin-top: 3em; }
+
+.landing-page-template ul {
+    list-style: none outside; 
+    margin: 0 auto;
+    width: 75%;
+}
+
+.landing-page-template ul li { 
+    background: url("http://minglemediamarketing.com/wp-content/themes/minglemedia/assets/images/1.png") no-repeat 0 15px; 
+    padding: 10px 25px;
+    font-size: 1.25em;
+}
+.about-texts ul {
+    list-style: none outside;
+    padding-left: 0;
+}
+.about-texts ul li { 
+    background: url("http://minglemediamarketing.com/wp-content/themes/minglemedia/assets/images/1.png") no-repeat 0 15px; 
+    padding: 10px 25px;
+    font-size: .90em;
+}
+.af-form label { color: #FFF !important; }
+.af-form .privacyPolicy { color: #FFF !important;}
+.af-form .privacyPolicy a { color: #FFF !important;}
+.af-form input {
+    width: auto;
+    color: #FFF !important;
+    background-color: #2A6288;
+    border: 1px solid #6A8BA1;
 }
