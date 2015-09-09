@@ -71,7 +71,6 @@ class PhoenixTeam_Styles {
                 '.hi-icon-effect .hi-icon {color: '.$custom_skin_color.';}' . "\n" .
                 'ul.social-links li a:hover {color: '.$custom_skin_color.';}' . "\n" .
                 '.search-active i {color: '.$custom_skin_color.';}' . "\n" .
-                '.phoenix-menu-wrapper li a:hover {color:'.$custom_skin_color.' !important;  border-color:'.$custom_skin_color.';}' . "\n" .
                 '.phoenix-menu-wrapper li.current a {color: '.$custom_skin_color.';}' . "\n" .
                 '.phoenix-menu-wrapper li:hover a {color: '.$custom_skin_color.'}' . "\n" .
                 '.phoenix-menu-wrapper ul li ul {border-top:1px solid '.$custom_skin_color.';}' . "\n" .
@@ -120,12 +119,10 @@ class PhoenixTeam_Styles {
                 '.tooltip_s {color: '.$custom_skin_color.';}' . "\n" .
                 '.index_4_prev:hover {border:1px solid '.$custom_skin_color.';}' . "\n" .
                 '.index_4_next:hover {border:1px solid '.$custom_skin_color.';}' . "\n" .
-                '.phoenix-menu-wrapper ul li.current-menu-item a, .phoenix-menu-wrapper ul li.current_page_item a {color: '.$custom_skin_color.';}' . "\n" .
                 '.wpb_accordion_header.ui-accordion-header-active a {color: '.$custom_skin_color.' !important;}' . "\n" .
                 '.phoenix-team-progerssbar-outside .vc_single_bar.bar_turquoise .vc_bar {background-color: '.$custom_skin_color.' !important;}' . "\n" .
                 '.wpb_accordion_header.ui-state-hover a{color: '.$custom_skin_color.' !important;}' . "\n" .
                 '.widget ul li > a:before {color: '.$custom_skin_color.';}' . "\n" .
-                '.phoenix-menu-wrapper ul li ul li a:hover {color: '.$custom_skin_color.' !important;}' . "\n" .
 
 
                 '@media screen and (max-width: 991px) {' . "\n" .
@@ -137,7 +134,6 @@ class PhoenixTeam_Styles {
                 '.phoenix-menu-wrapper ul li ul li a:hover {color:#fff; }' . "\n" .
                 '.phoenix-menu-wrapper ul li.current-menu-item a,'.
                 '.phoenix-menu-wrapper ul li.current_page_item a {color: #fff;}' . "\n" .
-                '.phoenix-menu-wrapper li a:hover {color: #FFF !important;}' . "\n" .
                 '.phoenix-menu-wrapper ul li a {background: '.$custom_skin_color.' !important;}' . "\n" .
                 '.phoenix-menu-wrapper ul li ul li a:hover {color: #fff !important; border-color: rgba(255,255,255,0.35) !important;}' . "\n" .
                 '.phoenix-menu-wrapper ul li a:hover {color: #fff !important; border-color: rgba(255,255,255,0.35) !important;}' . "\n" .

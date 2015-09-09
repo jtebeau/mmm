@@ -90,12 +90,10 @@ nav {
     left: 0px;
     z-index: 9999 !important;
     width: 100%;
-    background: #fff;
 }
 .sticky {
     position: fixed;
     border-bottom: 1px solid #fff;
-    background: rgba(255,255,255,1);
 }
 .menu ul ul { width: auto !important }
 .menu ul ul li { width: 180px; 
