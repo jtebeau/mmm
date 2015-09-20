@@ -1167,12 +1167,13 @@ ul.switcher-op-selectors li  a {
 .copyright { display: block }
 .cbp-l-inline { margin-top: 0px }
 .page-in {
-    border-top: 1px solid #87BE4D;
+    /*border-top: 1px solid #87BE4D;
     border-bottom: 1px solid #87BE4D;
-    background: #87BE4D;
-    min-height: 82px;
-    line-height: 82px;
+    background: #87BE4D; */
+    min-height: 175px;
+    line-height: 175px;
     color: #FFF;
+    text-shadow: 1px 3px 4px #000;
 }
 .cbp-l-filters-button .cbp-filter-item {
     background-color: #FFF;
@@ -1234,8 +1235,8 @@ ul.switcher-op-selectors li  a {
     visibility: hidden;
 }
 .page-in-name {
-    font-size: 23px;
-    font-weight: 100;
+    font-size: 45px;
+    font-weight: 200;
 }
 .page-in-name span { color: #00C0E1 }
 .page-in-bread {

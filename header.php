@@ -8,7 +8,7 @@
         <?php echo PhoenixTeam_Utils::favicons(); ?>
         <?php wp_head(); ?>
     </head>
-    <body <?php body_class(); ?>>
+    <body <?php body_class( $class ); ?>>
 
     <div class="wrapper<?php echo PhoenixTeam_Utils::template_layout(); ?>">
 

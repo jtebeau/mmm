@@ -134,7 +134,7 @@
 }
 
 @media screen and (max-width: 991px) { 
-
+.page-in-name { text-align: center; }
 .menu ul li.current-menu-item a, .menu ul li.current_page_item a.wpb_accordion_header.ui-accordion-header-active a {
     color: #FFF !important;
 }

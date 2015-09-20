@@ -15,38 +15,6 @@
             $page_subtitle  =   rwmb_meta(THEME_SLUG . '_subtitle', null, $page->ID);
             $page_crumbs    =   rwmb_meta(THEME_SLUG . '_page_breadcrumbs', null, $page->ID);
 ?>
-            <div class="page-in">
-              <div class="container">
-                <div class="row">
-
-                  <div class="col-lg-6 pull-left">
-                    <div class="page-in-name">
-<?php
-                        echo $page->post_title;
-
-                        if ($page_subtitle) 
-                            echo ": <span>{$page_subtitle}</span>";
-?>
-                    </div>
-                  </div>
-<?php
-                if ($gen_crumbs && $page_crumbs === '-1') :
-
-                    PhoenixTeam_Utils::breadcrumbs();
-
-                elseif ($page_crumbs === '1') :
-
-                    PhoenixTeam_Utils::breadcrumbs();
-                
-                else :
-?>
-                    <!-- Breadcrumbs turned off -->
-<?php
-                endif;
-?>
-                </div>
-              </div>
-            </div>
 
             <div <?php post_class(array('container', 'general-font-area', 'marg50')); ?>>
                 <div class="row">

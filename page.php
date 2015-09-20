@@ -70,7 +70,7 @@
 			  <div class="container">
 			    <div class="row">
 
-			      <div class="col-lg-6 pull-left">
+			      <div class="col-lg-6 col-sm-12">
 			      	<div class="page-in-name">
 <?php
 			      		echo get_the_title();
