@@ -13,14 +13,17 @@
     padding: 1em; 
     background-color: #e8e8e8; 
     text-align:center;
-    display: relative; }
+    display: relative;
+    width: 100%; }
 
 .ourProcess ul {
     padding: 1em;
+    width: 100%;
 }
 .ourProcess ul li {
-    display: inline;
+    display: inline-block;
     padding: 1em; 
+    width:15%;
 }
 .ourProcess:after {
     position: absolute;
@@ -183,7 +186,6 @@ nav {
 }
 .sticky {
     position: fixed;
-    border-bottom: 1px solid #fff;
     background: rgba(4,57,93,0.95);
 }
 .menu ul ul { width: auto !important }
